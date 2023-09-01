@@ -5,7 +5,7 @@ export const ADD_PROFILE = gql`
     addProfile(name: $name) {
       _id
       name
-      skills
+      hobbies
     }
   }
 `;
