@@ -20,7 +20,7 @@ const typeDefs = gql`
     profiles: [Profile]!
     profile(profileId: ID!): Profile
     hobbies(username: String): [Hobby]
-    hobby(hobbbyId: ID!): Hobby
+    hobby(hobbyId: ID!): Hobby
   }
 
   type Mutation {
