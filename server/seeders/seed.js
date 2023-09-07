@@ -1,11 +1,9 @@
 const db = require('../config/connection');
 const { User, Activity } = require('../models');
-const UserSeeds = require('./userSeeds.json');
-const activitySeeds = require('./activitySeeds.json');
 db.once('open', async () => {
   try {
     await Activity.deleteMany({});
-    await Activity.insertMany([
+    const activities = await Activity.insertMany([
       { "activityText": "Football"},
       {"activityText": "Golf"},
       {"activityText": "Video Games"},
@@ -19,7 +17,21 @@ db.once('open', async () => {
   ])
     console.log("Activites seeded!");
     await User.deleteMany({});
-    await User.create(UserSeeds);
+    await User.insertMany([
+      {
+        "name": "Peter",
+        "email": "peter@gmail.com",
+        "password": "password13",
+        "activities": [activities[2]._id, activities[3]._id]
+      },{
+        "name": "Bob",
+        "email": "bob@gmail.com",
+        "password": "BOBpassword",
+        "activities": [activities[0]._id, activities[4]._id]
+      }
+
+    ]);
+    console.log("users seeded");
 
     console.log('all done!');
     process.exit(0);
