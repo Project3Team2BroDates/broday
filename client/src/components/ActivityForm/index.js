@@ -3,38 +3,21 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_ACTIVITY } from '../../utils/mutations';
-import { QUERY_ACTIVITIES, QUERY_ME } from '../../utils/queries';
+// import { QUERY_ACTIVITIES } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
 const ActivityForm = () => {
     const [activityText, setActivityText] = useState('');
     
-    const [addActivity, { error }] = useMutation(ADD_ACTIVITY, {
-        update(cache, { data: { addActivity } }) {
-            try {
-                const { activities } = cache.readQuery({ query: QUERY_ACTIVITIES });
-
-                cache.writeQuery({
-                    query: QUERY_ACTIVITIES,
-                    data: { activities: [addActivity, ...activities] },
-                });
-            } catch (e) {
-                console.error(e);
-            }
-
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-                query: QUERY_ME,
-                data: { me: { ...me, savedActivities: [...me.savedActivities, addActivity] } },
-            });
-        },
-    });
+    const [addActivity, {error}] = useMutation(ADD_ACTIVITY);
+  
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         
         try {
+          console.log(activityText);
             const { data } = await addActivity({
                 variables: {activityText},
             });
@@ -55,7 +38,7 @@ const ActivityForm = () => {
 
     return (
         <div>
-        <h3>What's activities do you enjoy?</h3>
+        <h3>What activities do you enjoy?</h3>
   
         {Auth.loggedIn() ? (
           <>

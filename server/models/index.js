@@ -1,3 +1,3 @@
-const Profile = require('./Profile');
-const Hobby = require('./Hobby')
-module.exports = { Profile, Hobby };
+const User = require('./User');
+const Activity = require('./Activity')
+module.exports = { User, Activity };

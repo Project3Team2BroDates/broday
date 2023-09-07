@@ -12,7 +12,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,11 +28,11 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addProfile({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.addProfile.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }

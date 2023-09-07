@@ -1,14 +1,13 @@
 const { Schema, model } = require('mongoose');
 
-const hobbySchema = new Schema({
-    name: {
+const activitySchema = new Schema({
+    activityText: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
    // add more props?   
 });
 
-const Hobby = model('Hobby',hobbySchema)
-module.exports = Hobby;
+const Activity = model('Activity',activitySchema)
+module.exports = Activity;

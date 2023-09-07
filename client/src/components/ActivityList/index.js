@@ -18,7 +18,7 @@ const ActivityList = ({
               {activity.activityAuthor ?(
                 <Link
                   className="text-light"
-                  to={`/profiles/${activity.activityAuthor}`}
+                  to={`/users/${activity.activityAuthor}`}
                 >
                 </Link>
               ) : (

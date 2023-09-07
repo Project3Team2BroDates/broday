@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user($name: String!) {
+    user(name: $name) {
       _id
-      username
+      name
       email
       activities {
         _id
@@ -19,7 +19,6 @@ export const QUERY_ACTIVITIES = gql`
     activities {
       _id
       activityText
-      activityAuthor
     }
   }
 `;
@@ -29,28 +28,27 @@ export const QUERY_SINGLE_ACTIVITY = gql`
     activity(activityId: $activityId) {
       _id
       activityText
-      activityAuthor
     }
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      username
-      email
-      activities {
-        _id
-        activityText
-      }
-    }
-  }
-`;
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       _id
+//       name
+//       email
+//       activities {
+//         _id
+//         activityText
+//       }
+//     }
+//   }
+// `;
 
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
+export const QUERY_SINGLE_USER = gql`
+  query singleUser($userId: ID!) {
+    user(userId: $userId) {
       _id
       name
       activities {

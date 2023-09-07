@@ -1,80 +1,80 @@
 const { AuthenticationError } = require('apollo-server-express');
-const {Hobby, Profile } = require('../models');
+const {Activity, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    profiles: async () => {
-      return Profile.find().populate('hobbies');
+    users: async () => {
+      return User.find().populate('activities');
     },
-    profile: async (parent, { username }) => {
-      return Profile.findOne({ username }).populate('hobbies');
+    user: async (parent, { name }) => {
+      return User.findOne({ name }).populate('activities');
     },
-    hobbies: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Hobby.find(params);
+    activities: async (parent, { name }) => {
+      const params = username ? { name } : {};
+      return Activity.find(params);
     },
-    hobby: async (parent, { hobbyId }) => {
-      return Hobby.findOne({ _id: hobbyId });
+    activity: async (parent, { activityId }) => {
+      return Activity.findOne({ _id: Activity });
     },
     // me: async (parent, args, context) => {
     //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id }).populate('hobbies');
+    //     return User.findOne({ _id: context.user._id }).populate('activities');
     //   }
     //   throw new AuthenticationError('You need to be logged in!');
     // },
   },
 
   Mutation: {
-    addProfile: async (parent, { username, email, password }) => {
-      const profile = await Profile.create({ username, email, password });
-      const token = signToken(profile);
-      return { token, profile };
+    addUser: async (parent, { name, email, password }) => {
+      const user = await User.create({ name, email, password});
+      const token = signToken(user);
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (!profile) {
+      if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
 
-      const correctPw = await profile.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const token = signToken(profile);
+      const token = signToken(user);
 
-      return { token, profile };
+      return { token, user };
     },
-    addHobby: async (parent, { name }, context) => {
+    addActivity: async (parent,  {activityText} , context) => {
       if (context.user) {
-        const hobby = await Hobby.create({
-          name,
+        const activity = await Activity.create({
+          activityText,
         });
 
-        await Profile.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { hobbies: hobby._id } }
+          { $addToSet: { activities: activity._id } }
         );
 
-        return hobby;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+        return activity;
+      }else{throw new AuthenticationError('You need to be logged in!');}
+      
     },
-    removeHobby: async (parent, { hobbyId }, context) => {
+    removeActivity: async (parent, { activityId }, context) => {
       if (context.user) {
-        const hobby = await Hobby.findOneAndDelete({
-          _id: hobbyId,
+        const activity = await Activity.findOneAndDelete({
+          _id: activityId,
         });
 
-        await Profile.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { hobby: hobby._id } }
+          { $pull: { activity: activity._id } }
         );
 
-        return hobby;
+        return activity;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
