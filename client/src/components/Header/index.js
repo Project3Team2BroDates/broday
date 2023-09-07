@@ -2,8 +2,8 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header>
-      <div className="container flex-column">
+    <header className='header'>
+      <div>
         <h1 className='title'>
           BroDay
         </h1>
