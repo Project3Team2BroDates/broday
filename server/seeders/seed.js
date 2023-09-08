@@ -16,22 +16,7 @@ db.once('open', async () => {
       {"activityText": "Working Out"}
   ])
     console.log("Activites seeded!");
-    await User.deleteMany({});
-    await User.insertMany([
-      {
-        "name": "Peter",
-        "email": "peter@gmail.com",
-        "password": "password13",
-        "activities": [activities[2]._id, activities[3]._id]
-      },{
-        "name": "Bob",
-        "email": "bob@gmail.com",
-        "password": "BOBpassword",
-        "activities": [activities[0]._id, activities[4]._id]
-      }
-
-    ]);
-    console.log("users seeded");
+    
 
     console.log('all done!');
     process.exit(0);

@@ -3,17 +3,18 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { QUERY_SINGLE_USER} from '../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_ME} from '../utils/queries';
 
 import Auth from '../utils/auth';
+import ActivityList from '../components/ActivityList';
 
 const User = () => {
   const { userId } = useParams();
 
   const { loading, data } = useQuery(
-   // userId ? 
+   userId ? 
     QUERY_SINGLE_USER 
-    //: QUERY_ME
+    : QUERY_ME
     ,
 
     {
@@ -43,13 +44,14 @@ const User = () => {
   return (
     <div>
       <h2 className="card-header">
-        {userId ? `${user.name}'s` : 'Your'} friends have endorsed these
-        skills...
+        {userId ? `${user.name}'s` : 'Your'} activities.
       </h2>
-
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        
-      </div>
+      <div className="col-12 col-md-10 mb-5">
+          <ActivityList
+            activities={user.activities}
+            title={`${user.username}'s actvities`}
+          />
+        </div>
     </div>
   );
 };

@@ -12,7 +12,9 @@ const Home = () => {
 
   return (
     <main>
+      
      <div className='container'>
+      <h1>Welcome to BroDay</h1>
       <div>
         <ActivityForm />
       </div>

@@ -5,6 +5,7 @@ const ActivityList = ({
     activities,
     title,
 }) => {
+  console.log(activities);
     if (!activities.length) {
         return <h3>No Activities Yet</h3>;
     }
@@ -13,8 +14,8 @@ const ActivityList = ({
         <div>
       {activities &&
         activities.map((activity) => (
-          <div key={activity._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div key={activity._id} className="card-container ">
+            <h4 className="card-header bg-primary text-light ">
               {activity.activityAuthor ?(
                 <Link
                   className="text-light"
@@ -25,15 +26,10 @@ const ActivityList = ({
                 <span></span>
               )}
             </h4>
-            <div className="card-body bg-light p-2">
+            <div className="card-body ">
               <p>{activity.activityText}</p>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/activities/${activity._id}`}
-            >
-              test.
-            </Link>
+            
           </div>
         ))}
     </div>
