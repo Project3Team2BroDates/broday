@@ -28,6 +28,10 @@ body {
 /**
  * Render the `main` element consistently in IE.
  */
+ .ball {
+  width: 20px;
+  height: 20px;
+ }
  main {
   background-color: #1a1a1a;
   color: white;
@@ -39,30 +43,28 @@ body {
   box-shadow: 0px 0px 5px 5px white;
   width: 80%;
   padding: 20px;
-  margin-top: 35%;
+  margin-top: 20%;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
   opacity: .98;
 }
 main h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   border-bottom: 3px dashed white;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 .nav-container {
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #1a1a1a;
   width: 100vw;
   padding: 5px;
   border-radius: 5px;
-  margin-top: 18%;
+  margin-top: 4%;
   margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 20%;
   opacity: .9;
   z-index: 1;
 }
@@ -87,7 +89,7 @@ h1 {
   margin: 0.67em 0;
 }
 h3 {
-  font-size: 2.75rem;
+  font-size: 2rem;
 }
 /* Grouping content
    ========================================================================== */
@@ -124,8 +126,8 @@ p {
   font-size: 2em;
   background-color: #37b2eb;
   color: white;
-  height: 15rem;
-  padding-left: 10px;
+  height: 12rem;
+  padding-left: 5px;
   z-index: 1;
   position: fixed;
   width: 100vw;
@@ -134,6 +136,7 @@ p {
   text-align: center;
 }
 .title {
+  margin-left: 2rem;
   margin-top: 25px;
   font-size: 4em;
 }
@@ -1370,9 +1373,204 @@ label form [type='radio'] {
   flex: 0 0 100%;
   max-width: 100%;
 }
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 280px) and (max-width: 359px) {
   .container {
     width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 250px;
+  }
+  main h1 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 35vh;
+  }
+  .card {
+    width: 100%;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card .card-header { 
+    color: white;
+    margin-top: 0px;
+    font-size: 3rem;
+  }
+  ::placeholder{
+    color:#31a9e1;
+  }
+  
+  .card input {
+    font-size: 1rem;
+    width: 100%;
+    height: 40px;
+  }
+  .btn {
+    width: 60%;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+    border-radius: 15px;
+  }
+  .nav-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: -15px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    background-color: #1a1a1a;
+    text-align: center;
+    width: 80%;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+    margin-top: 1vh;
+  }
+  .title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-left: 0;
+  }
+  .col-sm-auto {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .col-sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .col-sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .col-sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .col-sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .col-sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .col-sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .justify-space-between-sm {
+    justify-content: space-between;
+  }
+  .justify-space-around-sm {
+    justify-content: space-around;
+  }
+  .justify-flex-start-sm {
+    justify-content: flex-start;
+  }
+  .justify-flex-end-sm {
+    justify-content: flex-end;
+  }
+  .justify-center-sm {
+    justify-content: center;
+  }
+  .align-start-sm {
+    align-items: flex-start;
+  }
+  .align-stretch-sm {
+    align-items: stretch;
+  }
+  .align-end-sm {
+    align-items: flex-end;
+  }
+  .align-center-sm {
+    align-items: center;
+  }
+  .align-content-start-sm {
+    align-content: flex-start;
+  }
+  .align-content-stretch-sm {
+    align-content: stretch;
+  }
+  .align-content-end-sm {
+    align-content: flex-end;
+  }
+  .align-content-center-sm {
+    align-content: center;
+  }
+}
+@media screen and (min-width: 359px) and (max-width: 540px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 200px;
+  }
+  main h1 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+  }
+  .signup-card-header  {
+    font-size: 2rem;
+    background-color:  #31a9e1;
+    border-radius: 15px;
+    color: white;
   }
   .card {
     width: 100%;
@@ -1380,9 +1578,238 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
+  .card .card-header { 
+    color: white;
+    margin-top: 0px;
+    font-size: 3rem;
+  }
+  .card input {
+    width: 100%;
+  }
+  ::placeholder {
+    color:#31a9e1
+  }
+  .btn {
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  .btn:hover {
+    background-color: #1a1a1a;
+    color: #37b2eb;
+  }
+  .login-container{
+    height: 100px;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 0px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 1.25rem;
+    margin-left: 10px;
+    margin-top: 1vh;
+  }
+  .title {
+    font-size: 4rem;
+  }
+}
+@media screen and (min-width: 540px) and (max-width: 640px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 200px;
+  }
+  main h1 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+  }
+  .card {
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 0px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 1.25rem;
+    margin-left: 10px;
+    margin-top: 1vh;
+  }
+  .title {
+    font-size: 4rem;
+  }
+  .col-sm-auto {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .col-sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .col-sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .col-sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .col-sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .col-sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .col-sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .justify-space-between-sm {
+    justify-content: space-between;
+  }
+  .justify-space-around-sm {
+    justify-content: space-around;
+  }
+  .justify-flex-start-sm {
+    justify-content: flex-start;
+  }
+  .justify-flex-end-sm {
+    justify-content: flex-end;
+  }
+  .justify-center-sm {
+    justify-content: center;
+  }
+  .align-start-sm {
+    align-items: flex-start;
+  }
+  .align-stretch-sm {
+    align-items: stretch;
+  }
+  .align-end-sm {
+    align-items: flex-end;
+  }
+  .align-center-sm {
+    align-items: center;
+  }
+  .align-content-start-sm {
+    align-content: flex-start;
+  }
+  .align-content-stretch-sm {
+    align-content: stretch;
+  }
+  .align-content-end-sm {
+    align-content: flex-end;
+  }
+  .align-content-center-sm {
+    align-content: center;
+  }
 }
 /* col-sm */
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 640px) and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 200px;
+  }
+  main h1 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+  }
+  .card {
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 0px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 1.25rem;
+    margin-left: 10px;
+    margin-top: 1vh;
+  }
+  .title {
+    font-size: 4rem;
+  }
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -1477,7 +1904,80 @@ label form [type='radio'] {
 }
 
 /* col-md */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 820px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 250px;
+  }
+  main h1 {
+    font-size: 4.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+  }
+  .card .card-header { 
+    color: white;
+    margin-top: 0px;
+    font-size: 6rem;
+  }
+  .card {
+    font-size: 6rem;
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ::placeholder{
+    color:#31a9e1;
+  }
+  .card input {
+    font-size: 3rem;
+    width: 100%;
+    height: 80px;
+  }
+  .btn {
+    width: 60%;
+    font-size: 3rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
+    border-radius: 15px;
+  }
+  .btn:hover {
+    background-color: #1a1a1a;
+    color: #37b2eb;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 140px;
+    margin-left: -25px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 2.25rem;
+    margin-left: 50px;
+    margin-top: 1vh;
+  }
+  .title {
+    font-size: 6rem;
+  }
   .col-md-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -1572,7 +2072,62 @@ label form [type='radio'] {
 }
 
 /* col-lg */
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 820px) and (max-width: 912px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 325px;
+  }
+  main h1 {
+    font-size: 3.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+  }
+  .card {
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card .card-header { 
+    color: white;
+    margin-top: 0px;
+    font-size: 6rem;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 195px;
+    margin-left: -30px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 2.25rem;
+    margin-left: 60px;
+    margin-top: 1vh;
+  }
+  a:hover{
+    cursor: pointer;
+  }
+  .title {
+    font-size: 8rem;
+  }
   .col-md-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -1667,7 +2222,243 @@ label form [type='radio'] {
 }
 
 /* col-xl */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 912px) and (max-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 325px;
+  }
+  main h1 {
+    font-size: 3.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 45vh;
+  }
+  .card {
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card .card-header { 
+    color: white;
+    width: 20%;
+    border-radius: 15px;
+    margin-top: 0px;
+    font-size: 2rem;
+  }
+  ::placeholder{
+    color:#31a9e1;
+  }
+  .card input {
+    font-size: 1.5rem;
+    width: 100%;
+    height: 40px;
+  }
+  .btn {
+    width: 20%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+    border-radius: 15px;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 195px;
+    margin-left: -30px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 2.25rem;
+    margin-left: 60px;
+    margin-top: 1vh;
+  }
+  a:hover{
+    cursor: pointer;
+  }
+  .title {
+    font-size: 8rem;
+  }
+  .col-xl-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .col-xl-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .col-xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-xl-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .col-xl-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .col-xl-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-xl-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .col-xl-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .col-xl-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-xl-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .col-xl-11 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-xl-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .justify-space-between-xl {
+    justify-content: space-between;
+  }
+  .justify-space-around-xl {
+    justify-content: space-around;
+  }
+  .justify-flex-start-xl {
+    justify-content: flex-start;
+  }
+  .justify-flex-end-xl {
+    justify-content: flex-end;
+  }
+  .justify-center-xl {
+    justify-content: center;
+  }
+  .align-start-xl {
+    align-items: flex-start;
+  }
+  .align-stretch-xl {
+    align-items: stretch;
+  }
+  .align-end-xl {
+    align-items: flex-end;
+  }
+  .align-center-xl {
+    align-items: center;
+  }
+  .align-content-start-xl {
+    align-content: flex-start;
+  }
+  .align-content-stretch-xl {
+    align-content: stretch;
+  }
+  .align-content-end-xl {
+    align-content: flex-end;
+  }
+  .align-content-center-xl {
+    align-content: center;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1280px) {
+  .container {
+    width: 100%;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   margin-top: 325px;
+  }
+  main h1 {
+    font-size: 3.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 35vh;
+  }
+  .card {
+    width: 100%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card .card-header { 
+    color: white;
+    width: 20%;
+    border-radius: 15px;
+    margin-top: 0px;
+    margin-bottom: 70px;
+    font-size: 2rem;
+  }
+  ::placeholder{
+    color:#31a9e1;
+  }
+  .card input {
+    font-size: 1.5rem;
+    width: 100%;
+    height: 40px;
+  }
+  .btn {
+    width: 20%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
+    border-radius: 15px;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 195px;
+    margin-left: -30px;
+    width: 100%;
+
+  }
+  .nav-container a {
+    color: white;
+    font-size: 2.25rem;
+    margin-left: 60px;
+    margin-top: 1vh;
+  }
+  a:hover{
+    cursor: pointer;
+  }
+  .title {
+    font-size: 8rem;
+  }
   .col-xl-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
