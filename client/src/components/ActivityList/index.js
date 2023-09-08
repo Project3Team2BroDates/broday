@@ -1,15 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from "@apollo/client";
+import { ADD_ACTIVITY } from "../../utils/mutations";
+import { QUERY_ACTIVITIES, QUERY_ME } from '../../utils/queries';
 
 const ActivityList = ({
     activities,
     title,
 }) => {
-  console.log(activities);
+  const [addActivity, { error }] = useMutation(ADD_ACTIVITY,{
+    update(cache, { data: { addActivity } }) {
+      try {
+        const { activities } = cache.readQuery({ query: QUERY_ACTIVITIES });
+
+        cache.writeQuery({
+          query: QUERY_ACTIVITIES,
+          data: { activities: [addActivity, ...activities] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, activities: [...me.activities, addActivity] } },
+      });
+    },
+  });
+
+  const addExistingActivity = async (event) =>{
+    console.log(event.target);
+    let activityText = event.target.value
+    try {
+      // console.log(activityText);
+      // write a new mutation that doesnt create duplicate db entries
+      const { data } = await addActivity({
+        variables: { activityText },
+      });
+
+      
+    } catch (err) {
+      console.error(err);
+    }
+  }
     if (!activities.length) {
         return <h3>No Activities Yet</h3>;
     }
-
+  
     return (
         <div>
       {activities &&
@@ -27,7 +66,7 @@ const ActivityList = ({
               )}
             </h4>
             <div className="card-body ">
-              <p>{activity.activityText}</p>
+              <li onClick={addExistingActivity} value={activity.activityText} >{activity.activityText}</li>
             </div>
             
           </div>

@@ -26,7 +26,13 @@ export const ADD_USER = gql`
     }
   }
 `;
-
+export const ADD_BRO = gql`
+mutation addBro($userId: ID!) {
+  addBro(userId: $userId) {
+    _id
+    name
+  }
+}`
 export const ADD_ACTIVITY = gql`
   mutation addActivity($activityText: String!) {
     addActivity(activityText: $activityText) {

@@ -5,7 +5,7 @@ const Header = () => {
     <header className='header-container'>
       <div className='header'>
         <h1 className='title'>
-          Br<span className='ball'>⚾</span>Day
+          BroDay
         </h1>
         
       </div>

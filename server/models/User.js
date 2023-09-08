@@ -24,6 +24,11 @@ const userSchema = new Schema({
       ref: 'Activity',      
     },
   ],
+  bros:[
+    {  type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ]
 });
 
 // set up pre-save middleware to create password
