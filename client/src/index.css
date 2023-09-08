@@ -25,13 +25,7 @@ body {
   margin: 0;
 }
 
-/**
- * Render the `main` element consistently in IE.
- */
- .ball {
-  width: 20px;
-  height: 20px;
- }
+
  main {
   background-color: #1a1a1a;
   color: white;
@@ -41,18 +35,64 @@ body {
   text-align: center;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 5px white;
-  width: 80%;
-  padding: 20px;
+  width: 60%;
   margin-top: 20%;
-  margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
   opacity: .98;
 }
 main h1 {
   font-size: 4rem;
   border-bottom: 3px dashed white;
   margin-bottom: 5rem;
+}
+.profile-container {
+  color: white;
+  width: 100%;
+  height: 100vh;
+  background-color: #1a1a1a;
+  margin-top: 30vh;
+  margin-bottom: 10vh;
+  padding: 10px;
+}
+.profile-picture {
+  display: flex;
+  margin-left: 45px;
+  margin-top: 5px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: white;
+}
+.profile-card-header {
+  background-color: #2d3e50;
+  color: white;
+  display: flex;
+  font-size: 3rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-left: 200px;
+}
+.activity-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  width: 80%;
+  color: white;
+  height: 50vh;
+}
+.greeting {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  background-color: #31a9e1;
+  width: 25%;
+  border-radius: 10px;
 }
 .nav-container {
   display: flex;

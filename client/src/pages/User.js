@@ -42,17 +42,23 @@ const User = () => {
   }
 
   return (
-    <div>
-      <h2 className="card-header">
+    <div className='profile-container'>
+      <div className='profile-picture'>
+    </div>
+    <h1 className='greeting'>Hello, {user.name}!</h1>
+
+
+      <h2 className="profile-card-header">
         {userId ? `${user.name}'s` : 'Your'} activities.
       </h2>
-      <div className="col-12 col-md-10 mb-5">
+      <div className="activity-list ">
           <ActivityList
             activities={user.activities}
             title={`${user.username}'s actvities`}
           />
         </div>
     </div>
+
   );
 };
 

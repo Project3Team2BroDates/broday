@@ -50,6 +50,19 @@ const resolvers = {
 
       return { token, user };
     },
+    addBro: async(parent,{userId},context) =>{
+      if(context.user){
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bros: userId } }
+        );
+        const user2=await User.findOneAndUpdate(
+          { _id: userId},
+          { $addToSet: { bros:context.user._id } }
+        );
+        return user;
+      }else{throw new AuthenticationError('You need to be logged in!');}
+    },
     addActivity: async (parent,  {activityText} , context) => {
       if (context.user) {
         const activity = await Activity.create({

@@ -37,7 +37,7 @@ const ActivityForm = () => {
     event.preventDefault();
 
     try {
-      console.log(activityText);
+      // console.log(activityText);
       const { data } = await addActivity({
         variables: { activityText },
       });
