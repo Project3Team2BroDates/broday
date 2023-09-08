@@ -39,7 +39,7 @@ body {
   box-shadow: 0px 0px 5px 5px white;
   width: 80%;
   padding: 20px;
-  margin-top: 35%;
+  margin-top: 20%;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -55,14 +55,12 @@ main h1 {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #1a1a1a;
   width: 100vw;
   padding: 5px;
   border-radius: 5px;
-  margin-top: 18%;
+  margin-top: 4%;
   margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 20%;
   opacity: .9;
   z-index: 1;
   position: fixed;
@@ -125,8 +123,8 @@ p {
   font-size: 2em;
   background-color: #37b2eb;
   color: white;
-  height: 15rem;
-  padding-left: 10px;
+  height: 12rem;
+  padding-left: 5px;
   z-index: 1;
   position: fixed;
   width: 100vw;
@@ -135,6 +133,7 @@ p {
   text-align: center;
 }
 .title {
+  margin-left: 2rem;
   margin-top: 25px;
   font-size: 4em;
 }
