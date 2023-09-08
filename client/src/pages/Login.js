@@ -39,7 +39,6 @@ const Login = (props) => {
 
   return (
     <main> 
-      <div className='login-container'>
         <div className="card">
           <h4 className="card-header">Login</h4>
           <div className="card-body">
@@ -83,7 +82,6 @@ const Login = (props) => {
             )}
           </div>
         </div>
-      </div>
     </main>
   );
 };

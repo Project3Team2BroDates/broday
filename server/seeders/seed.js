@@ -4,16 +4,16 @@ db.once('open', async () => {
   try {
     await Activity.deleteMany({});
     const activities = await Activity.insertMany([
-      { "activityText": "Football"},
-      {"activityText": "Golf"},
-      {"activityText": "Video Games"},
-      {"activityText": "Soccer"},
-      {"activityText": "Fishing"},
-      {"activityText": "Baseball"},
-      {"activityText": "Baseketball"},
-      {"activityText": "Hunting"},
-      {"activityText": "Hiking"},
-      {"activityText": "Working Out"}
+      { "activityText": "Football 🏈"},
+      {"activityText": "Golf 🏌️"},
+      {"activityText": "Video Games 🎮"},
+      {"activityText": "Soccer ⚽"},
+      {"activityText": "Fishing 🎣"},
+      {"activityText": "Baseball ⚾"},
+      {"activityText": "Baseketball 🏀"},
+      {"activityText": "Hunting 🦌"},
+      {"activityText": "Hiking 🏃‍♂️"},
+      {"activityText": "Working Out 🏋🏽‍♀️"}
   ])
     console.log("Activites seeded!");
     
