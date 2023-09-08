@@ -7,22 +7,24 @@ const resolvers = {
     users: async () => {
       return User.find().populate('activities');
     },
-    user: async (parent, { name }) => {
-      return User.findOne({ name }).populate('activities');
+    user: async (parent, args, context) => {
+      if (context.user) {
+            return User.findOne({ _id: context.user._id }).populate('activities');
+          }
+          throw new AuthenticationError('You need to be logged in!');
     },
-    activities: async (parent, { name }) => {
-      const params = username ? { name } : {};
-      return Activity.find(params);
+    activities: async () => {
+      return Activity.find();
     },
     activity: async (parent, { activityId }) => {
       return Activity.findOne({ _id: Activity });
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id }).populate('activities');
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('activities');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -52,6 +54,7 @@ const resolvers = {
       if (context.user) {
         const activity = await Activity.create({
           activityText,
+          
         });
 
         await User.findOneAndUpdate(
