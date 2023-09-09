@@ -17,16 +17,19 @@ html {
 /**
  * Remove the margin in all browsers.
  */
+.profile-image {
+  width: 200px;
+  height: 200px;
+}
 body {
-  font-family: 'Russo One', sans-serif;
+  font-family: "Russo One", sans-serif;
   background-image: url(images/hobbybg.png);
   background-size: cover;
   background-attachment: fixed;
   margin: 0;
 }
 
-
- main {
+main {
   background-color: #1a1a1a;
   color: white;
   display: flex;
@@ -40,7 +43,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  opacity: .98;
+  opacity: 0.98;
 }
 main h1 {
   font-size: 4rem;
@@ -105,7 +108,7 @@ main h1 {
   margin-top: 4%;
   margin-bottom: 50px;
   margin-left: 20%;
-  opacity: .9;
+  opacity: 0.9;
   z-index: 1;
   position: fixed;
 }
@@ -114,7 +117,7 @@ main h1 {
   font-size: 2.5rem;
   margin-left: 2rem;
 }
- a:hover {
+a:hover {
   cursor: pointer;
 }
 .navbar-link {
@@ -189,9 +192,9 @@ p {
   color: white;
   font-size: 1.5rem;
 }
- h4 {
+h4 {
   text-align: center;
- }
+}
 a {
   background-color: transparent;
 }
@@ -311,9 +314,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -321,9 +324,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -332,9 +335,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -384,8 +387,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -395,8 +398,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -404,7 +407,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -414,7 +417,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -480,7 +483,6 @@ END NORMALIZE CSS
   margin-left: auto;
   margin-right: auto;
 }
-
 
 label {
   display: inline-block;
@@ -1160,7 +1162,7 @@ a:hover {
   padding: 5px;
   margin-bottom: 1rem;
   margin-top: 3rem;
-  opacity: .95;
+  opacity: 0.95;
 }
 
 .card .card-header {
@@ -1241,13 +1243,13 @@ form .form-input.form-input-squared {
   border-radius: 0;
 }
 
-form [type='checkbox'],
-form [type='radio'] {
+form [type="checkbox"],
+form [type="radio"] {
   display: inline-block;
 }
 
-label form [type='checkbox'],
-label form [type='radio'] {
+label form [type="checkbox"],
+label form [type="radio"] {
   display: inline-block;
 }
 
@@ -1343,7 +1345,7 @@ label form [type='radio'] {
   margin-right: -15px;
 }
 
-[class*='col-'] {
+[class*="col-"] {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -1424,7 +1426,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 250px;
+    margin-top: 250px;
   }
   main h1 {
     font-size: 2.5rem;
@@ -1444,15 +1446,15 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     margin-top: 0px;
     font-size: 3rem;
   }
-  ::placeholder{
-    color:#31a9e1;
+  ::placeholder {
+    color: #31a9e1;
   }
-  
+
   .card input {
     font-size: 1rem;
     width: 100%;
@@ -1466,7 +1468,7 @@ label form [type='radio'] {
     margin-top: 0px;
     border-radius: 15px;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1474,7 +1476,6 @@ label form [type='radio'] {
     margin-top: 80px;
     margin-left: -15px;
     width: 100%;
-
   }
   .nav-container a {
     background-color: #1a1a1a;
@@ -1593,7 +1594,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 200px;
+    margin-top: 200px;
   }
   main h1 {
     font-size: 2.5rem;
@@ -1607,9 +1608,9 @@ label form [type='radio'] {
     width: 100%;
     height: 20vh;
   }
-  .signup-card-header  {
+  .signup-card-header {
     font-size: 2rem;
-    background-color:  #31a9e1;
+    background-color: #31a9e1;
     border-radius: 15px;
     color: white;
   }
@@ -1619,7 +1620,7 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     margin-top: 0px;
     font-size: 3rem;
@@ -1628,7 +1629,7 @@ label form [type='radio'] {
     width: 100%;
   }
   ::placeholder {
-    color:#31a9e1
+    color: #31a9e1;
   }
   .btn {
     width: 60%;
@@ -1640,17 +1641,16 @@ label form [type='radio'] {
     background-color: #1a1a1a;
     color: #37b2eb;
   }
-  .login-container{
+  .login-container {
     height: 100px;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
     margin-left: 0px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -1672,7 +1672,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 200px;
+    margin-top: 200px;
   }
   main h1 {
     font-size: 2.5rem;
@@ -1692,14 +1692,13 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
     margin-left: 0px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -1813,7 +1812,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 200px;
+    margin-top: 200px;
   }
   main h1 {
     font-size: 2.5rem;
@@ -1833,14 +1832,13 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
     margin-left: 0px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -1955,7 +1953,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 250px;
+    margin-top: 250px;
   }
   main h1 {
     font-size: 4.5rem;
@@ -1969,7 +1967,7 @@ label form [type='radio'] {
     width: 100%;
     height: 20vh;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     margin-top: 0px;
     font-size: 6rem;
@@ -1981,8 +1979,8 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  ::placeholder{
-    color:#31a9e1;
+  ::placeholder {
+    color: #31a9e1;
   }
   .card input {
     font-size: 3rem;
@@ -2001,14 +1999,13 @@ label form [type='radio'] {
     background-color: #1a1a1a;
     color: #37b2eb;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 140px;
     margin-left: -25px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -2123,7 +2120,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 325px;
+    margin-top: 325px;
   }
   main h1 {
     font-size: 3.5rem;
@@ -2143,19 +2140,18 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     margin-top: 0px;
     font-size: 6rem;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 195px;
     margin-left: -30px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -2163,7 +2159,7 @@ label form [type='radio'] {
     margin-left: 60px;
     margin-top: 1vh;
   }
-  a:hover{
+  a:hover {
     cursor: pointer;
   }
   .title {
@@ -2273,7 +2269,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 325px;
+    margin-top: 325px;
   }
   main h1 {
     font-size: 3.5rem;
@@ -2293,15 +2289,15 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     width: 20%;
     border-radius: 15px;
     margin-top: 0px;
     font-size: 2rem;
   }
-  ::placeholder{
-    color:#31a9e1;
+  ::placeholder {
+    color: #31a9e1;
   }
   .card input {
     font-size: 1.5rem;
@@ -2316,14 +2312,13 @@ label form [type='radio'] {
     margin-top: 0px;
     border-radius: 15px;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 195px;
     margin-left: -30px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -2331,7 +2326,7 @@ label form [type='radio'] {
     margin-left: 60px;
     margin-top: 1vh;
   }
-  a:hover{
+  a:hover {
     cursor: pointer;
   }
   .title {
@@ -2435,7 +2430,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
-   margin-top: 325px;
+    margin-top: 325px;
   }
   main h1 {
     font-size: 3.5rem;
@@ -2455,7 +2450,7 @@ label form [type='radio'] {
     margin-left: auto;
     margin-right: auto;
   }
-  .card .card-header { 
+  .card .card-header {
     color: white;
     width: 20%;
     border-radius: 15px;
@@ -2463,8 +2458,8 @@ label form [type='radio'] {
     margin-bottom: 70px;
     font-size: 2rem;
   }
-  ::placeholder{
-    color:#31a9e1;
+  ::placeholder {
+    color: #31a9e1;
   }
   .card input {
     font-size: 1.5rem;
@@ -2479,14 +2474,13 @@ label form [type='radio'] {
     margin-top: 50px;
     border-radius: 15px;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 195px;
     margin-left: -30px;
     width: 100%;
-
   }
   .nav-container a {
     color: white;
@@ -2494,7 +2488,7 @@ label form [type='radio'] {
     margin-left: 60px;
     margin-top: 1vh;
   }
-  a:hover{
+  a:hover {
     cursor: pointer;
   }
   .title {
