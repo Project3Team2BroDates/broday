@@ -14,7 +14,6 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 import Activites from './components/Activities';
 
 const httpLink = createHttpLink({
@@ -44,7 +43,6 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <Navbar />
           <div className="container">
             <Routes>
               <Route 
