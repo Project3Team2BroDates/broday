@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer w-100 mt-auto p-4">
+    <footer className="footer w-100  p-4">
       <div className="container text-center mb-5">
         <h4>&copy; {new Date().getFullYear()} - BroDay Team</h4>
       </div>
@@ -11,3 +11,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
