@@ -20,7 +20,7 @@ const User = () => {
       variables: { userId: userId },
     }
   );
-
+//lets do this
   const user = data?.me || data?.user || {};
 
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
