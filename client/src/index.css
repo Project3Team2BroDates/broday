@@ -1508,8 +1508,7 @@ label form [type='radio'] {
   flex: 0 0 100%;
   max-width: 100%;
 }
-
-@media screen and (min-width: 414px) and (min-height: 896px) {
+@media screen and (min-width: 280px) and (max-width: 359px) {
   .container {
     width: 100%;
   }
@@ -1519,6 +1518,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     width: 100%;
+   margin-top: 250px;
   }
   main h1 {
     font-size: 2.5rem;
@@ -1526,116 +1526,15 @@ label form [type='radio'] {
   h3 {
     font-size: 2rem;
   }
-  .profile-container {
-    display: flex;
-    flex-wrap: wrap;
-    color: white;
-    width: 100%;
-    background-color: #1a1a1a;
-    border-radius: 5px;
-    padding: 10px;
-    opacity: .95;
-  }
-  .profile-picture {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: 1vw;
-    margin-top: 5px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 1px solid white;
-  }
-  .profile-card-header {
-    display: flex;
-    text-align: center;
-  justify-content: center;
-    color: white;
-    font-size: 2rem;
-    width: 100%;
-    border-radius: 15px;
-  }
-  .user-info-container{
-    border-radius: 5px;
-    margin: 0;
-    width: 100%;
-    height: 20vh;
-  }
-  .user-info-container ul {
-    width: 100%;
-    font-size: 1.25rem;
-    list-style: none;
-  }
-  .activity-list {
-    justify-content: center;
-    background-color: #2d3e50;
-    width: 100%;
-    color: white;
-    height: 50vh;
-    margin-bottom: 100px;
-    border-radius: 15px;
-  
-  }
-  .activity-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 75px;
-    width: 100%;
-  }
-  .greeting {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    margin-left: 2rem;
-    font-size: 1.5rem;
-    border-radius: 10px;
-  }
-  .friend-list {
-    background-color: #1a1a1a;
-    color: white;
-    border-radius: 10px;
-  margin-top: 150px;
-  margin-left: -315px;
-    min-width: 30vh;
-    height: 50vh;
-    opacity: .95;
-  }
-  .friend-list h4 {
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    border-bottom: 2px solid white;
-    letter-spacing: 1.5px;
-  }
-  .header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 32vh;
-  }
   .header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    height: 32vh;
-  }
-  .signup-card-header  {
-    font-size: 2rem;
-    background-color:  #31a9e1;
-    border-radius: 15px;
-    color: white;
+    height: 35vh;
   }
   .card {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1644,53 +1543,138 @@ label form [type='radio'] {
     margin-top: 0px;
     font-size: 3rem;
   }
-  .card input {
-    width: 100%;
+  ::placeholder{
+    color:#31a9e1;
   }
-  ::placeholder {
-    color:#31a9e1
+  
+  .card input {
+    font-size: 1rem;
+    width: 100%;
+    height: 40px;
   }
   .btn {
     width: 60%;
+    font-size: 1.5rem;
     text-align: center;
     padding: 10px;
+    margin-top: 0px;
     border-radius: 15px;
-  }
-  .btn:hover {
-    background-color: #1a1a1a;
-    color: #37b2eb;
-  }
-  .login-container{
-    height: 100px;
   }
   .nav-container{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 85px;
-    margin-left: 0px;
+    margin-top: 80px;
+    margin-left: -15px;
     width: 100%;
 
   }
   .nav-container a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #1a1a1a;
-    width: 100%;
-    height: 30px;
+    text-align: center;
+    width: 80%;
     color: white;
     border-radius: 5px;
     padding: 5px;
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-top: 1vh;
   }
   .title {
-    font-size: 4.5rem;
-    margin-left: -10px;
-    margin-top: 15px;
+    text-align: center;
+    font-size: 3.5rem;
+    margin-left: 0;
+  }
+  .col-sm-auto {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .col-sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .col-sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .col-sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .col-sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .col-sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .col-sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .col-sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .justify-space-between-sm {
+    justify-content: space-between;
+  }
+  .justify-space-around-sm {
+    justify-content: space-around;
+  }
+  .justify-flex-start-sm {
+    justify-content: flex-start;
+  }
+  .justify-flex-end-sm {
+    justify-content: flex-end;
+  }
+  .justify-center-sm {
+    justify-content: center;
+  }
+  .align-start-sm {
+    align-items: flex-start;
+  }
+  .align-stretch-sm {
+    align-items: stretch;
+  }
+  .align-end-sm {
+    align-items: flex-end;
+  }
+  .align-center-sm {
+    align-items: center;
+  }
+  .align-content-start-sm {
+    align-content: flex-start;
+  }
+  .align-content-stretch-sm {
+    align-content: stretch;
+  }
+  .align-content-end-sm {
+    align-content: flex-end;
+  }
+  .align-content-center-sm {
+    align-content: center;
   }
   .footer {
     display: flex;
@@ -1752,7 +1736,7 @@ label form [type='radio'] {
     background-color:#2d3e50;
   }
 }
-@media screen and (min-width: 412px) and (min-height: 915px) {
+@media screen and (min-width: 414px) and (max-height: 896px) {
   .container {
     width: 100%;
   }
@@ -2400,7 +2384,7 @@ label form [type='radio'] {
     justify-content: center;
     align-items: center;
     margin-top: 85px;
-    margin-left: -5px;
+    margin-left: -70px;
     width: 100%;
 
   }
@@ -3374,10 +3358,10 @@ label form [type='radio'] {
   .nav-container a {
     display: flex;
     width: 100%;
-    height: 45px;
-    color: white;
+    height: 55px;
+    color: red;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin:0;
   }
   .title {
@@ -3608,16 +3592,16 @@ label form [type='radio'] {
     display: flex;
     justify-content: center;
     width: 80%;
-    margin-top: 8vh;
-    margin-left: 0rem;
+    margin-top: 10vh;
+    margin-left: 11rem;
   }
   .nav-container a {
     display: flex;
     width: 100%;
-    height: 40px;
+    height: 55px;
     color: white;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   margin-right: 10px;    
   text-shadow: 5px 5px 5px black;
 
