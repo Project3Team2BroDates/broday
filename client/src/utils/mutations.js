@@ -42,3 +42,8 @@ export const ADD_ACTIVITY = gql`
   }
 `;
 
+export const POST_MESSAGE = gql`
+mutation($user: String!, $content: String!) {
+  postMessage(user: $user, content: $content) 
+}
+`;

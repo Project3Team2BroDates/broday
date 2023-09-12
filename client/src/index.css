@@ -40,6 +40,54 @@ main h1 {
   border-bottom: 3px dashed white;
   margin-bottom: 5rem;
 }
+.user-name {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.user-text {
+  display: flex;
+  margin: 5px;
+  justify-content: center;
+}
+.chat-container {
+  padding: 3rem;
+  width: 100%;
+  height: 15rem;
+  opacity: .9;
+  margin-top: 25vh;
+}
+.user-text textarea {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  font-size: 2rem;
+  color: black;
+  width: 80%;
+  height: 200px;
+  background-color: white;
+}
+.user-name textarea {
+  display: flex;
+  margin: 20px;
+  height: 3.5rem;
+  width: 10rem;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  background-color: white;
+}
+.send-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 3rem;
+  color: white;
+  border-radius: 50px;
+  background-color: #37b2eb;
+}
 .profile-container {
   display: flex;
   flex-wrap: wrap;
@@ -369,8 +417,7 @@ img {
 button,
 input,
 optgroup,
-select,
-textarea {
+select{
   font-family: inherit;
   /* 1 */
   font-size: 100%;
@@ -470,9 +517,7 @@ progress {
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
-textarea {
-  overflow: auto;
-}
+
 
 /**
  * 1. Add the correct box sizing in IE 10.
@@ -582,7 +627,6 @@ label {
 
 input,
 select,
-textarea,
 button {
   text-align: center;
   margin: 0;

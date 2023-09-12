@@ -14,9 +14,8 @@ const Header = () => {
           <Link to='/me' >
             Profile
           </Link>
-        
-          <Link to='/ActivityForm' >
-            ActivityForm
+          <Link to='/chat' >
+            Chat
           </Link>
           
           <Link to='/about' >

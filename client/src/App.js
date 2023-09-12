@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import Chat from "./pages/Chat";
 import Home from './pages/Home';
 import User from './pages/User';
 import Signup from './pages/Signup';
@@ -68,6 +68,10 @@ function App() {
               <Route 
                 path="/activities" 
                 element={<Activites />} 
+              />
+              <Route 
+                path="/chat"
+                element={<Chat />}
               />
             </Routes>
           </div>

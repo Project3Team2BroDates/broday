@@ -1,8 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
-const {Activity, User } = require('../models');
+const {Activity, User, Message, Subscription } = require('../models');
 const { signToken } = require('../utils/auth');
-
+const messages = [];
+const subscribers = [];
+const onMessagesUpdates = (fn) => subscribers.push(fn);
 const resolvers = {
+
   Query: {
     users: async () => {
       return User.find().populate('activities');
@@ -25,6 +28,9 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    messages: async() =>{
+      return Message.find();
+    }
   },
 
   Mutation: {
@@ -50,8 +56,8 @@ const resolvers = {
 
       return { token, user };
     },
-    addBro: async(parent,{userId},context) =>{
-      if(context.user){
+    addBro: async(parent,{userId},{context}) =>{
+      if(context.authMiddleware.user){
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { bros: userId } }
@@ -63,15 +69,15 @@ const resolvers = {
         return user;
       }else{throw new AuthenticationError('You need to be logged in!');}
     },
-    addActivity: async (parent,  {activityText} , context) => {
-      if (context.user) {
+    addActivity: async (parent,  {activityText} , {context}) => {
+      if (context.authMiddleware.user) {
         const activity = await Activity.create({
           activityText,
           
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: context.authMiddleware.user_id },
           { $addToSet: { activities: activity._id } }
         );
 
@@ -79,20 +85,41 @@ const resolvers = {
       }else{throw new AuthenticationError('You need to be logged in!');}
       
     },
-    removeActivity: async (parent, { activityId }, context) => {
-      if (context.user) {
-        const activity = await Activity.findOneAndDelete({
+    removeActivity: async (parent, { activityId }, {context}) => {
+      if (context.authMiddleware.user) {
+        const activity = await Activity.findOne({
           _id: activityId,
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: context.authMiddleware.user_id },
           { $pull: { activity: activity._id } }
         );
 
         return activity;
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+    postMessage: (parent, { user, content }) => {
+      const id = messages.length;
+      messages.push({
+        id,
+        user,
+        content,
+      });
+      subscribers.forEach((fn) => fn());
+      return id;
+    },
+  },
+
+  Subscription: {
+    messages: {
+      subscribe: (parent, args, { pubsub }) => {
+        const channel = Math.random().toString(36).slice(2, 15);
+        onMessagesUpdates(() => pubsub.publish(channel, { messages }));
+        setTimeout(() => pubsub.publish(channel, { messages }), 0);
+        return pubsub.asyncIterator(channel);
+      },
     },
   },
 };

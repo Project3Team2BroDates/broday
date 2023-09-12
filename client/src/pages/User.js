@@ -45,6 +45,7 @@ const User = () => {
       
       <div className='profile-picture'>
        <img src={user.profilePic}/>
+       <button className='upload-button'>Upload</button>
     </div>
     <h1 className='greeting'>Hello, {user.name}!</h1>
     <div class="friend-dropdown">

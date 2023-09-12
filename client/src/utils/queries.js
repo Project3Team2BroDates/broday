@@ -58,3 +58,13 @@ export const QUERY_SINGLE_USER = gql`
     }
   }
 `;
+
+export const GET_MESSAGES = gql`
+  subscription {
+    messages {
+        id
+        contnet
+        user
+    }
+  }
+  `;
