@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($userId: ID!) {
@@ -6,6 +6,7 @@ export const QUERY_USER = gql`
       _id
       name
       email
+      profilePic
       activities {
         _id
         activityText
@@ -38,6 +39,7 @@ export const QUERY_ME = gql`
       _id
       name
       email
+      profilePic
       activities {
         _id
         activityText
@@ -62,9 +64,9 @@ export const QUERY_SINGLE_USER = gql`
 export const GET_MESSAGES = gql`
   subscription {
     messages {
-        id
-        contnet
-        user
+      id
+      contnet
+      user
     }
   }
-  `;
+`;
