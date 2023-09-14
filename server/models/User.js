@@ -18,6 +18,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  profilePic: {
+    type: String,
+    default: "/images/dracula.jpeg",
+  },
   activities: [
     {
       type: Schema.Types.ObjectId,

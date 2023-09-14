@@ -42,6 +42,24 @@ export const ADD_ACTIVITY = gql`
   }
 `;
 
+export const ADD_EXISTING_ACTIVITY = gql`
+  mutation addExistingActivity($activityText: String!) {
+    addExistingActivity(activityText: $activityText) {
+      _id
+      activityText
+    }
+  }
+`;
+
+export const REMOVE_ACTIVITY = gql`
+  mutation removeActivity($activityText: String!){
+    removeActivity(activityText: $activityText){
+      _id
+      activityText
+    }
+  }
+`;
+
 export const POST_MESSAGE = gql`
 mutation($user: String!, $content: String!) {
   postMessage(user: $user, content: $content) 

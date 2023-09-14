@@ -2,17 +2,18 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { QUERY_SINGLE_USER, QUERY_ME} from '../utils/queries';
+import { QUERY_USER, QUERY_ME} from '../utils/queries';
+// import {REMOVE_ACTIVITY} from '../utils/mutations'
 
 import Auth from '../utils/auth';
-import ActivityList from '../components/ActivityList';
+import UserActivities from '../components/UserActivities';
 
 const User = () => {
   const { userId } = useParams();
 
   const { loading, data } = useQuery(
    userId ? 
-    QUERY_SINGLE_USER 
+    QUERY_USER 
     : QUERY_ME
     ,
 
@@ -39,12 +40,12 @@ const User = () => {
       </h4>
     );
   }
-
+console.log(user.name)
   return (
     <div className='profile-container'>
       
       <div className='profile-picture'>
-       <img src={user.profilePic}/>
+       <img src={"/images/"+"devito.jpeg"}alt='profile pic '/>
        <button className='upload-button'>Upload</button>
     </div>
     <h1 className='greeting'>Hello, {user.name}!</h1>
@@ -64,7 +65,7 @@ const User = () => {
       <li>Location:</li> 
       <li>Contact: {user.email}</li>
       <li>Bio:</li>
-      <li>Favortie Activity:</li>
+      <li>Favorite Activity:</li>
       <li>Favorite Sports Teams:</li>
       </ul>
     </div>
@@ -73,7 +74,7 @@ const User = () => {
         {user.name}'s activities.
       </h2>
       <div className="activity-list ">
-          <ActivityList
+          <UserActivities
             activities={user.activities}
             title={`${user.username}'s actvities`}
           />

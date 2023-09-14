@@ -1,30 +1,17 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
-// import { WebSocketLink } from "@apollo/client/link/ws";
-const { PubSub } = require("graphql-yoga");
 const path = require("path");
-
-
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 const { authMiddleware } = require("./utils/auth");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const pubsub = new PubSub();
-
-// const link = new WebSocketLink({
-//   uri: `ws://localhost:4000/`,
-//   options: {
-//     reconnect: true,
-//   },
-// });
 
 const server = new ApolloServer({
-  // link,
   typeDefs,
   resolvers,
-  context: {authMiddleware, pubsub},
+  context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: false }));
