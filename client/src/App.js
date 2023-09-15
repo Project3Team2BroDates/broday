@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Chat from "./pages/Chat";
+import ChatRoom from "./components/ChatRoom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Signup from './pages/Signup';
@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Activites from './components/Activities';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,7 +45,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <div className="container">
+          <div className="container-1">
             <Routes>
               <Route 
                 path="/" 
@@ -70,10 +71,10 @@ function App() {
                 path="/activities" 
                 element={<Activites />} 
               />
-              {/* <Route 
-                path="/chat"
-                element={<Chat />}
-              /> */}
+              <Route 
+                path="/ChatRoom"
+                element={<ChatRoom />}
+              />
             </Routes>
           </div>
           <Footer />

@@ -28,16 +28,16 @@ db.once("open", async () => {
 
     // Create an array of activity objects
     const activities = [
-      { activityText: "Football 🏈" },
-      { activityText: "Golf 🏌️" },
-      { activityText: "Video Games 🎮" },
-      { activityText: "Soccer ⚽" },
-      { activityText: "Fishing 🎣" },
-      { activityText: "Baseball ⚾" },
-      { activityText: "Basketball 🏀" },
-      { activityText: "Hunting 🦌" },
-      { activityText: "Hiking 🏃‍♂️" },
-      { activityText: "Working Out 🏋🏽‍♀️" },
+      { activityText: "Football" },
+      { activityText: "Golf" },
+      { activityText: "Video Games" },
+      { activityText: "Soccer" },
+      { activityText: "Fishing" },
+      { activityText: "Baseball" },
+      { activityText: "Basketball" },
+      { activityText: "Hunting" },
+      { activityText: "Hiking" },
+      { activityText: "Working Out" },
     ];
 
     await Activity.insertMany(activities);

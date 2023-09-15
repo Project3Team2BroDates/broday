@@ -52,7 +52,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addBro: async(parent,{userId},{context}) =>{
+    addBro: async(parent,{userId},context) =>{
       if(context.user){
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -65,15 +65,16 @@ const resolvers = {
         return user;
       }else{throw new AuthenticationError('You need to be logged in!');}
     },
-    addActivity: async (parent,  {activityText} , {context}) => {
+    addActivity: async (parent,  {activityText} , context) => {
       if (context.user) {
+        console.log(context.user);
         const activity = await Activity.create({
           activityText,
           
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user_id },
+          { _id: context.user._id },
           { $addToSet: { activities: activity._id } }
         );
 
@@ -81,7 +82,7 @@ const resolvers = {
       }else{throw new AuthenticationError('You need to be logged in!');}
       
     },
-    addExistingActivity: async (parent, {activityText} , {context}) =>{
+    addExistingActivity: async (parent, {activityText} , context) =>{
         if(context.user){
           const activity = await Activity.findOne({activityText: activityText});
           const user = await User.findOneAndUpdate(
@@ -92,7 +93,7 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in!');
     },
-    removeActivity: async (parent, { activityId }, {context}) => {
+    removeActivity: async (parent, { activityId }, context) => {
       if (context.user) {
         const activity = await Activity.findOne({
           _id: activityId,

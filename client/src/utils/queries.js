@@ -65,7 +65,7 @@ export const GET_MESSAGES = gql`
   subscription {
     messages {
       id
-      contnet
+      content
       user
     }
   }
