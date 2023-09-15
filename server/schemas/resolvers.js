@@ -67,7 +67,7 @@ const resolvers = {
     },
     addActivity: async (parent,  {activityText} , context) => {
       if (context.user) {
-        console.log(context.user);
+        // console.log(context.user);
         const activity = await Activity.create({
           activityText,
           

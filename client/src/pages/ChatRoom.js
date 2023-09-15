@@ -1,76 +1,66 @@
-// import React, { useEffect, useState } from 'react';
-// import { StreamChat } from 'stream-chat';
-// import {
-//   Chat,
-//   Channel,
-//   Window,
-//   ChannelHeader,
-//   MessageList,
-//   MessageInput,
-//   Thread,
-//   LoadingIndicator 
-// } from 'stream-chat-react';
+import { useState, useEffect } from 'react';
+import { StreamChat } from 'stream-chat';
+import { Chat, Channel, Window, ChannelHeader, MessageInput, MessageList } from 'stream-chat-react';
+
+const apiKey = 'kuv6yxtd3dju';
+
+const USER1 = {
+    id: 'user1',
+    name: 'User 1',
+};
 
 
-// // import 'stream-chat-react/dist/css/v2/index.css';
+const users = [USER1];
 
-// const apiKey = 'kuv6yxtd3dju';
-// // const apiSecret = 'ce78aebjbdhrsgty7nx4ubpp897nagbqqjvab8efn37ffzrzmgbcduqcdkz8tstt';
+const getRandomUser = () => {
+    const randomIndex = Math.floor(Math.random() * users.length);
+    return users[randomIndex];
+};
 
-// const user = {
-//   id: 'john',
-//   name: 'John',
-// }
+function ChatRoom() {
+    const [chatClient, setChatClient] = useState(null);
+    const [channel, setChannel] = useState(null);
 
-// export default function ChatRoom() {
-//   let client = '';
-//   let channel = '';
+    useEffect(() => {
+       async function init() {
+        const client = StreamChat.getInstance(apiKey);
 
-//   useEffect(() => {
-//     async function init() {
-//       const chatClient = StreamChat.getInstance(apiKey);
-//       console.log(chatClient);
-//       console.log(chatClient.devToken(user.id));
-//       await chatClient.connectUser(
-//         {
-//           id: 'john',
-//           name: 'John Doe',
-//       },
-//       chatClient.devToken('john'),
-//       );
+        const user = getRandomUser();
 
-//       const chatChannel = chatClient.channel('messaging', 'custom_channel_id', {
-//         name: 'Talk with Boys',
-//         members: [user.id],
-//       })
-//       console.log(channel);
+        client.connectUser(user, client.devToken(user.id));
 
-//       await chatChannel.watch();
-//       client = chatClient;
-//       channel = chatChannel;
-//       console.log(client);
-//     }
+        const channel = client.channel("team", "general", { name: "General" });
 
-//     init();
+        await channel.create()
+        channel.addMembers([user.id])
 
-//     if (client)  return () => client.disconnectUser();
-//   }, [])
 
-//   if (!client || !channel) return <LoadingIndicator />
+        setChannel(channel);
+        setChatClient(chatClient);
+        }
 
-//   return (
-//     <div className="chat-container">
-//     <Chat client={client}>
-//       <Channel channel={channel}>
-//         <Window>
-//           <ChannelHeader />
-//           <MessageList/>
-//           <MessageInput />
-//         </Window>
-//         <Thread />
-//       </Channel>
-//     </Chat>
-//     </div>
-//   )
-// }
+        init();
 
+        return () => {
+            if(chatClient) chatClient.disconnectUser();
+        }
+    }, [])
+
+    if (!chatClient || !channel) return <>  </>;
+
+    return (
+        <div>
+            <Chat client={chatClient} theme={'messaging light'}>
+                <Channel channel={channel}>
+                    <Window>
+                        <ChannelHeader />
+                        <MessageList />
+                        <MessageInput />
+                    </Window>
+                </Channel>
+            </Chat>
+        </div>
+    );
+}
+
+export default ChatRoom;

@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatRoom from "./components/ChatRoom";
+import ChatRoom from "./pages/ChatRoom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Signup from './pages/Signup';

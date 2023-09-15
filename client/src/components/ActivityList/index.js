@@ -28,22 +28,31 @@ const ActivityList = ({
       // });
     },
   })
-  const handleClick = async (event) =>{
-    console.log(event.target.value);
-    let a = '';
-    a = event.target.value; 
-   setActivityText(a);
-  //  console.log(activityText)
-  
+  const addActivity = async (activity) =>{
     try {
       const { data } = await addExistingActivity({
-        variables: { activityText },
+        variables: { activity },
       });
       console.log(data);
       
     } catch (error) {
       console.error(error)
     }
+    return "done"
+  }
+  const handleClick = async (event) =>{
+    event.stopPropagation()
+    // console.log(event.target.value);
+    let a = '';
+    a = event.target.value; 
+    console.log(a);
+    
+   setActivityText(a);
+   setTimeout(console.log("hi"),2000);
+   addActivity(activityText)
+  //  console.log(activityText)
+  
+    
   
     
     // setActivityText("")
