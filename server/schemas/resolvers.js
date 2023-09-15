@@ -89,7 +89,7 @@ const resolvers = {
             { _id: context.user_id },
             { $addToSet: { activities: activity._id } }
           );
-          return user;
+          return activity;
         }
         throw new AuthenticationError('You need to be logged in!');
     },

@@ -21,16 +21,16 @@ const ActivityList = ({
 
         cache.writeQuery({
           query: QUERY_ACTIVITIES,
-          data: { activities: [addExistingActivity, ...activities] },
+          data: { activities: [ ...activities] },
         });
       }catch (err) {
         console.error(err);
       }
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
-      });
+      // const { me } = cache.readQuery({ query: QUERY_ME });
+      // cache.writeQuery({
+      //   query: QUERY_ME,
+      //   data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
+      // });
     },
   })
     const handleChange = (event) =>{
@@ -47,7 +47,7 @@ const ActivityList = ({
           let currentActivity = activityArray[i] 
           console.log(currentActivity);
           const { data } = await addExistingActivity({
-            variables: { currentActivity},
+            variables: {activityText: currentActivity},
           });
           console.log(data);
         }
