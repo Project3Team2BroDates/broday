@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+
 import { ADD_EXISTING_ACTIVITY } from "../../utils/mutations";
 import { QUERY_ACTIVITIES, QUERY_ME } from '../../utils/queries';
 
+
+
 const ActivityList = ({
-    activities,
-    title,
+  activities,
+  title,
 }) => {
-  const [activityText, setActivityText] = useState("");
-  const [addExistingActivity, {e}] = useMutation(ADD_EXISTING_ACTIVITY,{
+  const [activityArray, setActivityArray] = useState([]);
+
+  const [addExistingActivity, {error}] = useMutation(ADD_EXISTING_ACTIVITY,{
     update(cache, { data: { addExistingActivity } }){
       try{
         const { activities } = cache.readQuery({ query: QUERY_ACTIVITIES });
@@ -21,50 +26,54 @@ const ActivityList = ({
       }catch (err) {
         console.error(err);
       }
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
-      // });
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
+      });
     },
   })
-  const addActivity = async (activity) =>{
-    try {
-      const { data } = await addExistingActivity({
-        variables: { activity },
-      });
-      console.log(data);
-      
-    } catch (error) {
-      console.error(error)
+    const handleChange = (event) =>{
+      const value = event.target.value;
+      activityArray.push(value)
+      console.log(activityArray);
     }
-    return "done"
-  }
-  const handleClick = async (event) =>{
-    event.stopPropagation()
-    // console.log(event.target.value);
-    let a = '';
-    a = event.target.value; 
-    console.log(a);
-    
-   setActivityText(a);
-   setTimeout(console.log("hi"),2000);
-   addActivity(activityText)
-  //  console.log(activityText)
-  
-    
-  
-    
-    // setActivityText("")
-  }
  
+    const handleFormSubmit = async (event)=>{
+      event.preventDefault();
+      try{
+        console.log(activityArray);
+        for(let i = 0; i < activityArray.length; i++){
+          let currentActivity = activityArray[i] 
+          console.log(currentActivity);
+          const { data } = await addExistingActivity({
+            variables: { currentActivity},
+          });
+          console.log(data);
+        }
+          
+        
+        
+      }catch (err) {
+      console.error(err);
+    }
+    setActivityArray([])
+    }
     if (!activities.length) {
         return <h3>No Activities Yet</h3>;
     }
-  
-    return (
-        <div>
-      {activities &&
+
+  return (
+    <div>
+      <h3>What activities do you enjoy?</h3>
+
+    
+        <>
+          <form
+            className="flex-row justify-center justify-space-between-md align-center"
+            onSubmit={handleFormSubmit}
+          >
+              {activities &&
         activities.map((activity) => (
           <div key={activity._id} className="card-container ">
             <h4 className="card-header bg-primary text-light ">
@@ -73,13 +82,29 @@ const ActivityList = ({
             
             </h4>
             <div className="card-body ">
-              <button onClick={handleClick} value={activity.activityText} >{activity.activityText}</button>
+              <input type="checkbox" name={activity.activityText} 
+              value={activity.activityText} 
+              onChange={handleChange}/>{activity.activityText}
             </div>
             
           </div>
         ))}
+
+            <div className="col-12 col-lg-3">
+              <button className="btn btn-primary btn-block py-3" type="submit">
+                Add Activity
+              </button>
+            </div>
+            {error && (
+              <div className="col-12 my-3 bg-danger text-white p-3">
+                {error.message}
+              </div>
+            )}
+          </form>
+        </>
+      
     </div>
-    );
+  );
 };
 
-export default ActivityList;
+export default ActivityList ;
