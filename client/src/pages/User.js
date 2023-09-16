@@ -18,39 +18,40 @@ const User = () => {
   //lets do this
   const user = data?.me || data?.user || {};
 
-  // const handleFileChange = (event) => {
-  //   const selectedFile = event.target.files[0];
-  //   setFile(selectedFile);
-  // };
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log(selectedFile);
+    setFile(selectedFile);
+  };
 
-  // const handleUpload = async () => {
-  //   if (!file) {
-  //     return; // No file selected, do nothing
-  //   }
+  const handleUpload = async () => {
+    console.log("Upload button clicked!");
+    if (!file) {
+      return; // No file selected, do nothing
+    }
 
-  //   // Create a FormData object to send the file to the server
-  //   const formData = new FormData();
-  //   formData.append("file", file);
+    // Create a FormData object to send the file to the server
+    const formData = new FormData();
+    formData.append("file-demo", file);
 
-  //   // Send the file to the server (you should replace 'uploadEndpoint' with your actual server endpoint)
-  //   try {
-  //     const response = await fetch("/uploadEndpoint", {
-  //       method: "POST",
-  //       body: formData,
-  //     });
+    // Send the file to the server (you should replace 'uploadEndpoint' with your actual server endpoint)
+    try {
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-  //     // Handle the response from the server as needed
-  //     if (response.ok) {
-  //       // File uploaded successfully
-  //       console.log("File uploaded successfully!");
-  //       // You can update the user's profile with the new file information here
-  //     } else {
-  //       console.error("File upload failed.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error uploading file:", error);
-  //   }
-  // };
+      // Handle the response from the server as needed
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
+        const data = await response.json();
+        console.log("File uploaded successfully!", data);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
@@ -73,11 +74,17 @@ const User = () => {
     <div className="profile-container">
       <div className="profile-picture">
         <img src={user.profilePic} alt="profile pic " />
-        {/* <input type="file" accept=".jpeg, .jpg, .png" onChange={handleFileChange} /> */}
-        {/* <button className="upload-button" onClick={handleUpload}>Upload</button> */}
+        <input
+          type="file"
+          accept=".jpeg, .jpg, .png"
+          onChange={handleFileChange}
+        />
+        <button className="upload-button" onClick={handleUpload}>
+          Upload
+        </button>
       </div>
       <h1 className="greeting">Hello, {user.name}!</h1>
-      
+
       <div className="user-info-container">
         <ul className="user-info">
           <li>Location:</li>
@@ -92,7 +99,7 @@ const User = () => {
         <div className="activity-list ">
           <UserActivities
             activities={user.activities}
-            title={`${user.username}'s actvities`}
+            title={`${user.username}'s activities`}
           />
         </div>
       </div>
