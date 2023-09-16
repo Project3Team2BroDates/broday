@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import Auth from '../../utils/auth';
+
+
 const Header = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <header className='header-container'>
       <div className='header'>
@@ -14,23 +22,36 @@ const Header = () => {
           <Link to='/me' >
             Profile
           </Link>
-        
-          <Link to='/ActivityForm' >
-            ActivityForm
+          <Link to='/ChatRoom' >
+            Chat
           </Link>
           
           <Link to='/about' >
             About
           </Link>
           
-        <Link to='/'>
-          Logout
-          </Link>
-          
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+          <div className="login-logout">
+            
+          {Auth.loggedIn() ? (
+            <button className="logout" onClick={logout}>
+              Logout
+            </button>
+            
+          ) : (
+            <>
+              <Link className="btn" to="/login">
+                Login
+              </Link>
+              <Link className="btn" to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
+       
+      </div>  
         
     </div>
+    
       </div>
     </header>
   );

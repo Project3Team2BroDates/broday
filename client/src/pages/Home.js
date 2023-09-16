@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <main>
       
-     <div className='container'>
+     <div className='container1'>
       <h1>Welcome to BroDay</h1>
       <div>
         <ActivityForm />

@@ -1,13 +1,14 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
-
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 const { authMiddleware } = require("./utils/auth");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -30,6 +31,7 @@ app.use(
   express.static(path.join(__dirname, "../client/public/images"))
 );
 
+app.use("/upload", uploadRoutes);
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
