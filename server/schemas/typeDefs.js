@@ -35,7 +35,7 @@ const typeDefs = gql`
     addActivity(activityText: String!): Activity
     addExistingActivity(activityText: String!): Activity
     removeUser(userId: ID!): User
-    removeActivity(activityId: ID!): User
+    removeActivity(activityText: String!): Activity
   }
 `;
 

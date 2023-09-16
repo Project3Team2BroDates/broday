@@ -85,23 +85,23 @@ const resolvers = {
     addExistingActivity: async (parent, {activityText} , context) =>{
         if(context.user){
           const activity = await Activity.findOne({activityText: activityText});
-          const user = await User.findOneAndUpdate(
-            { _id: context.user_id },
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
             { $addToSet: { activities: activity._id } }
           );
           return activity;
         }
         throw new AuthenticationError('You need to be logged in!');
     },
-    removeActivity: async (parent, { activityId }, context) => {
+    removeActivity: async (parent, { activityText }, context) => {
       if (context.user) {
         const activity = await Activity.findOne({
-          _id: activityId,
+          activityText: activityText,
         });
 
         await User.findOneAndUpdate(
-          { _id: context.user_id },
-          { $pull: { activity: activity._id } }
+          { _id: context.user._id },
+          { $pull: {activities: {activityText:activity._id}}}
         );
 
         return activity;

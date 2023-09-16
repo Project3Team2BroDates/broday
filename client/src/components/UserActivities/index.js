@@ -1,21 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
-import { ADD_ACTIVITY, REMOVE_ACTIVITY } from "../../utils/mutations";
+import {  REMOVE_ACTIVITY } from "../../utils/mutations";
 import { QUERY_ACTIVITIES, QUERY_ME } from '../../utils/queries';
 
 const UserActivities = ({
     activities,
     title,
 }) => {
-  const [addActivity, { error }] = useMutation(ADD_ACTIVITY,{
-    update(cache, { data: { addActivity } }) {
+  const [removeActivity, { error }] = useMutation(REMOVE_ACTIVITY,{
+    update(cache, { data: { removeActivity } }) {
       try {
         const { activities } = cache.readQuery({ query: QUERY_ACTIVITIES });
 
         cache.writeQuery({
           query: QUERY_ACTIVITIES,
-          data: { activities: [addActivity, ...activities] },
+          data: { activities: [removeActivity, ...activities] },
         });
       } catch (e) {
         console.error(e);
@@ -25,26 +25,20 @@ const UserActivities = ({
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, activities: [...me.activities, addActivity] } },
+        data: { me: { ...me, activities: [...me.activities, removeActivity] } },
       });
     },
   });
 
-  // const addExistingActivity = async (event) =>{
-  //   console.log(event.target);
-  //   let activityText = event.target.value
-  //   try {
-  //     // console.log(activityText);
-  //     // write a new mutation that doesnt create duplicate db entries
-  //     const { data } = await addActivity({
-  //       variables: { activityText },
-  //     });
+  const handleClick = async (event) =>{
+    const value = event.target.value;
+    console.log(value);
+    const {data} = await removeActivity({
+      variables: {activityText: value},
+    });
+    console.log(data);
+  }
 
-      
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
     if (!activities.length) {
         return <h3>No Activities Yet</h3>;
     }
@@ -66,8 +60,8 @@ const UserActivities = ({
               )}
             </h4>
             <div className="card-body ">
-              <li value={activity.activityText} >{activity.activityText}</li>
-              <button>Remove Activity</button>
+              <li >{activity.activityText}</li>
+              <button value={activity.activityText} onClick={handleClick}>Remove Activity</button>
             </div>
             
           </div>
