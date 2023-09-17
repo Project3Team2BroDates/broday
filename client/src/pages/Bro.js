@@ -1,30 +1,33 @@
 import React, { useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+
+import { QUERY_USER } from "../utils/queries";
 // import {REMOVE_ACTIVITY} from '../utils/mutations'
 
 import Auth from "../utils/auth";
 import UserActivities from "../components/UserActivities";
 
-const User = () => {
-  const { userId } = useParams();
+
+const Bro = () => {
+  let { userId } = useParams();
+  console.log(userId);
+ 
   const [file, setFile] = useState(null);
 
-  const { loading, data } = useQuery(userId ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery(QUERY_USER, {
     variables: { userId: userId },
   });
+  console.log(data);
   //lets do this
-  const user = data?.me || data?.user || {};
+  const user =  data?.user || {};
   const bros = user.bros;
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     console.log(selectedFile);
     setFile(selectedFile);
   };
-
- 
 
   const handleUpload = async () => {
     console.log("Upload button clicked!");
@@ -55,9 +58,9 @@ const User = () => {
     }
   };
 
-  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
-    return <Navigate to="/me" />;
-  }
+  // if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
+  //   return <Navigate to="/me" />;
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -71,7 +74,6 @@ const User = () => {
       </h4>
     );
   }
-  console.log(user);
   return (
     <div className="profile-container">
       <div className="infoContainer">
@@ -96,10 +98,10 @@ const User = () => {
         </ul>
       </div>
       <div class="friend-dropdown">
-        <button class="friend-dropbtn">≣</button>
+        <button class="friend-dropbtn">Friends</button>
         <div class="friend-dropdown-content">
           {bros.map((bro)=>(
-            <Link to={`/user/${bro._id}`}>{bro.name}</Link>
+            <li>{bro.name}</li>
             
           ))}
         </div>
@@ -117,4 +119,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Bro;
