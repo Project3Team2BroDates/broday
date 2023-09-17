@@ -72,18 +72,17 @@ const ActivityForm = () => {
                 placeholder="Here's a new activity..."
                 value={activityText}
                 className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div className="">
+              <button type="submit">
                 Add Activity
               </button>
             </div>
             {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
+              <div className="">
                 {error.message}
               </div>
             )}

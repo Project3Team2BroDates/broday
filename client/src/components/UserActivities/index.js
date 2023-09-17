@@ -44,7 +44,7 @@ const UserActivities = ({
     }
   
     return (
-        <div>
+        <div className='activityListContainer'>
       {activities &&
         activities.map((activity) => (
           <div key={activity._id} className="card-container ">

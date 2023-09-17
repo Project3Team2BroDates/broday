@@ -39,7 +39,7 @@ const Login = (props) => {
 
   return (
     <main>
-      <div className="card">
+      <div className="login-card">
         <h4 className="card-header">Login</h4>
         <div className="card-body">
           {data ? (

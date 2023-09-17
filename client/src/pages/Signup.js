@@ -40,8 +40,7 @@ const Signup = () => {
 
   return (
     <main >
-      <div >
-        <div className="card">
+        <div className="signUp-card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             {data ? (
@@ -92,7 +91,6 @@ const Signup = () => {
             )}
           </div>
         </div>
-      </div>
     </main>
   );
 };
