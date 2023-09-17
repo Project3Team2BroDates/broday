@@ -8,9 +8,10 @@ const resolvers = {
     users: async () => {
       return User.find().populate('activities');
     },
-    user: async (parent, args, context) => {
+    user: async (parent, {userId}, context) => {
       if (context.user) {
-            return User.findOne({ _id: context.user._id }).populate('activities');
+
+            return User.findOne({ _id: userId}).populate('activities').populate('bros');
           }
           throw new AuthenticationError('You need to be logged in!');
     },
@@ -23,10 +24,11 @@ const resolvers = {
     me: async (parent, args, context) => {
       // console.log(context)
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('activities');
+        return User.findOne({ _id: context.user._id }).populate('activities').populate('bros');
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+    
   },
 
   Mutation: {
@@ -52,17 +54,19 @@ const resolvers = {
 
       return { token, user };
     },
-    addBro: async(parent,{userId},context) =>{
+    addBro: async(parent,{name},context) =>{
       if(context.user){
-        const user = await User.findOneAndUpdate(
+        const bro = await User.findOne({name:name})
+        const user1 = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { bros: userId } }
+          { $addToSet: { bros: bro._id } },
+          {new:true}
         );
-        const user2 = await User.findOneAndUpdate(
-          { _id: userId},
-          { $addToSet: { bros:context.user._id } }
-        );
-        return user;
+        await User.findOneAndUpdate(
+          {_id: bro._id},
+          { $addToSet: { bros: context.user._id} },
+          )
+        return user1;
       }else{throw new AuthenticationError('You need to be logged in!');}
     },
     addActivity: async (parent,  {activityText} , context) => {
@@ -99,12 +103,13 @@ const resolvers = {
           activityText: activityText,
         });
 
-        await User.findOneAndUpdate(
+        return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: {activities: {activityText:activity._id}}}
+          { $pull: {activities: activity._id}},
+          {new:true}
         );
 
-        return activity;
+        
       }
       throw new AuthenticationError('You need to be logged in!');
     },

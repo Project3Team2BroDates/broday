@@ -22,12 +22,15 @@ const Header = () => {
           <Link to='/ActivitiesList' >
             Activities
           </Link>
+          <Link to='/Friends' >
+            Friends
+          </Link>
           <Link to='/me' >
             Profile
           </Link>
-          <Link to='/ChatRoom' >
+          {/* <Link to='/ChatRoom' >
             Chat
-          </Link>
+          </Link> */}
           
           
           <Link to='/Meet' >

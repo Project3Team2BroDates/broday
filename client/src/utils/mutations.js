@@ -27,8 +27,8 @@ export const ADD_USER = gql`
   }
 `;
 export const ADD_BRO = gql`
-mutation addBro($userId: ID!) {
-  addBro(userId: $userId) {
+mutation addBro($name: String!) {
+  addBro(name: $name) {
     _id
     name
   }
@@ -55,7 +55,11 @@ export const REMOVE_ACTIVITY = gql`
   mutation removeActivity($activityText: String!){
     removeActivity(activityText: $activityText){
       _id
+      name
+      activities {
+      _id
       activityText
+      }
     }
   }
 `;

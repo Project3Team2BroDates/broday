@@ -8,6 +8,7 @@ const typeDefs = gql`
     password: String
     profilePic: String
     activities: [Activity]!
+    bros: [User]!
   }
   type Auth {
     token: ID!
@@ -29,13 +30,13 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
-    addBro(userId: ID!): User
+    addBro(name: String!): User
     login(email: String!, password: String!): Auth
 
     addActivity(activityText: String!): Activity
     addExistingActivity(activityText: String!): Activity
     removeUser(userId: ID!): User
-    removeActivity(activityText: String!): Activity
+    removeActivity(activityText: String!): User
   }
 `;
 

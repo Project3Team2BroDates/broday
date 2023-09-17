@@ -7,16 +7,18 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatRoom from "./pages/ChatRoom";
+import Contact from "./pages/Contact";
 import Home from './pages/Home';
 import Meet from './pages/Meet'
 import ActivitiesList from './pages/Activites';
 import User from './pages/User';
+import Bro from './pages/Bro';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Activites from './components/Activities';
+import Friends from './pages/Friends';
 
 
 const httpLink = createHttpLink({
@@ -62,12 +64,20 @@ function App() {
                 element={<Signup />}
               />
               <Route 
+                path="/Friends"
+                element={<Friends />}
+              />
+              <Route 
                 path="/ActivitiesList"
                 element={<ActivitiesList />}
               />
-              <Route 
+              {/* <Route 
                 path="/user/:userId" 
                 element={<User />} 
+              /> */}
+              <Route
+              path="/user/:userId" 
+              element={<Bro />}
               />
               <Route 
                 path="/me" 
@@ -82,8 +92,8 @@ function App() {
                 element={<Activites />} 
               />
               <Route 
-                path="/ChatRoom"
-                element={<ChatRoom />}
+                path="/Contact"
+                element={<Contact />}
               />
             </Routes>
           </div>
