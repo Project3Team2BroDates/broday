@@ -72,19 +72,18 @@ const User = () => {
   console.log(user);
   return (
     <div className="profile-container">
-      <div className="profile-picture">
+      <div className="infoContainer">
+      <h1 className="greeting">Hello, {user.name}!</h1>
+
         <img src={user.profilePic} alt="profile pic " />
         <input
+          className="chosenPic"
           type="file"
           accept=".jpeg, .jpg, .png"
           onChange={handleFileChange}
         />
-        <button className="upload-button" onClick={handleUpload}>
-          Upload
-        </button>
-      </div>
-      <h1 className="greeting">Hello, {user.name}!</h1>
-
+      
+</div>
       <div className="user-info-container">
         <ul className="user-info">
           <li>Location:</li>

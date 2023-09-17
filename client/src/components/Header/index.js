@@ -19,6 +19,9 @@ const Header = () => {
           <Link to='/' >
             Home
           </Link>
+          <Link to='/ActivitiesList' >
+            Activities
+          </Link>
           <Link to='/me' >
             Profile
           </Link>
@@ -26,8 +29,9 @@ const Header = () => {
             Chat
           </Link>
           
-          <Link to='/about' >
-            About
+          
+          <Link to='/Meet' >
+            The Bro Squad
           </Link>
           
           <div className="login-logout">
