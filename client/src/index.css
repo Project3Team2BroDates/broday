@@ -217,6 +217,14 @@ main .card-container {
   height: 50px;
   margin-left: 2rem;
 }
+
+.activity-pic{
+  border-radius: 0;
+  width: 150px;
+  height: 150px;
+  /* margin-left: 2rem; */
+}
+
 .contactLinks {
   display: flex;
   flex-direction: row;
@@ -275,7 +283,7 @@ background-color:#2d3e50;
   margin-top: 4rem;
   width: 100%;
   color: white;
-  height: 100vh;
+  height: auto;
   border-radius: 15px;
 
 }
@@ -295,7 +303,7 @@ background-color:#2d3e50;
   flex-wrap: wrap;
   color: white;
   width: 80%;
-  height: 100%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   background-color: #1a1a1a;
@@ -311,14 +319,28 @@ background-color:#2d3e50;
   border-radius: 10px;
   flex-wrap: wrap;
   background-color:#2d3e50;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
-  width: 80%;
-  height: 80vh;
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 100vh;
 }
-
+.activityListContainer .card-container {
+  border-radius: 15px;
+}
+.activityListContainer .card-container .card-body {
+  background-color:#1a1a1a;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+}
+.activityListContainer .card-body {
+  border-radius: 10px;
+}
+.activityListContainer .card-container li {
+  background-color: #31a9e1;
+}
 .activityListContainer button {
   background-color: #31a9e1;
   width: 100%;
@@ -332,6 +354,7 @@ background-color:#2d3e50;
   cursor: pointer;
 }
 .activityListContainer li{
+  border-color: #31a9e1;
   font-size: 2rem;
   text-align: center;
   list-style: none;
@@ -339,6 +362,16 @@ background-color:#2d3e50;
 }
 .activityListContainer .card-body li {
 font-size: 1.5rem;
+}
+.activityListContainer button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  margin-top: 2.5em;
+  width: 2rem;
+  height: 2rem;
 }
 .greeting {
   display: flex;
@@ -428,7 +461,8 @@ border-radius: 15px;
 /* The container <div> - needed to position the dropdown content */
 .friend-dropdown {
   display: inline-block;
-  position: fixed;
+  margin-left: 45rem;
+  margin-top: -20rem;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -436,13 +470,11 @@ border-radius: 15px;
   display: none;
   font-size: 1.5rem;
   text-align: center;
-  background-color:#31a9e1;
   width: 10rem;
+  height: 5rem;
   border-radius: 25px;
   text-shadow: 5px 5px 5px black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  transition: 3s;
 }
 
 /* Links inside the dropdown */
@@ -468,9 +500,7 @@ border-radius: 15px;
   background-color:#31a9e1;
   text-shadow: 5px 5px 5px black;
 }
-.friend-dropbtn {
 
-}
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -1644,6 +1674,7 @@ label form [type='radio'] {
 @media screen and (min-width: 280px) and  (max-width: 414px){
   .container-1 {
     width: 100%;
+    height: auto;
     padding: 0;
   }
   main {
@@ -1738,13 +1769,12 @@ label form [type='radio'] {
     flex-direction: column;
     color: white;
     width: 100%;
-    height: 100%;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     background-color: #1a1a1a;
     border-radius: 5px;
     margin-top: 30em;
-    margin-bottom: 10rem;
     padding: 10px;
     opacity: .95;
    
@@ -1821,13 +1851,66 @@ label form [type='radio'] {
     flex-wrap: wrap;
     border-radius: 10px;
     flex-wrap: wrap;
-    background-color:#2d3e50;
-    align-items: center;
-    flex-direction: column;
     margin-top: 5rem;
     margin-bottom: 2rem;
     width: 100%;
-    height: 80vh;
+    height: auto;
+  }
+  .activityListContainer {
+    display: block;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+    padding: 5px;
+    width: 100%;
+    height: 100vh;
+  }
+  .activityListContainer .card-container {
+    border-radius: 15px;
+  }
+  .activityListContainer .card-container .card-body {
+    background-color:#1a1a1a;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+  }
+  .activityListContainer .card-body {
+    border-radius: 10px;
+  }
+  .activityListContainer .card-container li {
+    background-color: #31a9e1;
+  }
+  .activityListContainer button {
+    background-color: #31a9e1;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border-radius: 25px;
+  }
+  .activityListContainer button:hover {
+    background-color: white;
+    color:#31a9e1;
+    cursor: pointer;
+  }
+  .activityListContainer li{
+    border-color: #31a9e1;
+    font-size: 2rem;
+    text-align: center;
+    list-style: none;
+    margin-bottom: 1em;
+  }
+  .activityListContainer .card-body li {
+  font-size: 1.5rem;
+  }
+  .activityListContainer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    margin-top: 5em;
+    width: 2rem;
+    height: 2rem;
   }
   main .card-container {
     display: flex;
@@ -1911,6 +1994,13 @@ label form [type='radio'] {
   height: 50px;
   margin-left: 1.75rem;
 }
+
+.activity-pic{
+  width: 120px;
+  height: 120px;
+  /* margin-left: 1.75rem; */
+}
+
 .memberDiv {
   background-color: #2d3e50;
   text-align: center;
@@ -1959,9 +2049,7 @@ label form [type='radio'] {
   /* The container <div> - needed to position the dropdown content */
   .friend-dropdown {
     width: 80%;
-    margin-top: -5rem;
     margin-left: -20rem;
-    position: fixed;
   }
   
   /* Dropdown Content (Hidden by Default) */
@@ -2000,5 +2088,50 @@ label form [type='radio'] {
    .friend-dropbtn {
     background-color:#31a9e1;
     text-shadow: 5px 5px 5px black;
+  }
+  .friendsListContainer {
+    display: flex;
+    color: white;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32rem;
+    padding: 20px;
+    background-color: #1a1a1a;
+  }
+  .friendsListContainer h3 {
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    text-shadow: 5px 5px 5px black;
+    background-color: #31a9e1;
+  }
+  .friendSubmit {
+    background-color: #039116;
+    color: white;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 2rem;
+  }
+  .friendsListContainer input {
+    margin-bottom: 2rem;
+    width: 80%;
+  }
+  .friendsListContainer form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .friendsListContainer input {
+    width: 60%;
+    
   }
 }

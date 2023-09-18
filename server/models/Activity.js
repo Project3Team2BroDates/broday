@@ -6,7 +6,10 @@ const activitySchema = new Schema({
     required: true,
     trim: true,
   },
-   // add more props?   
+  activityPic:{
+    type: String,
+    default: "/images/hobby.png"
+  }
 });
 
 const Activity = model('Activity',activitySchema)

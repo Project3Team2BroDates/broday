@@ -60,8 +60,9 @@ const UserActivities = ({
               )}
             </h4>
             <div className="card-body ">
-              <li >{activity.activityText}</li>
-              <button value={activity.activityText} onClick={handleClick}>Remove Activity</button>
+              <li>{activity.activityText}</li>
+              <img src={activity.activityPic} className='activity-pic' alt='a visual representation of this activity'/>
+              <button value={activity.activityText} onClick={handleClick}>X</button>
             </div>
             
           </div>
