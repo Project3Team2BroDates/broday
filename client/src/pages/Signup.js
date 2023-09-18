@@ -40,9 +40,8 @@ const Signup = () => {
 
   return (
     <main >
-      <div >
-        <div className="signup-card">
-          <h4 className="signup-card-header">Sign Up</h4>
+        <div className="signUp-card">
+          <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
@@ -92,7 +91,6 @@ const Signup = () => {
             )}
           </div>
         </div>
-      </div>
     </main>
   );
 };

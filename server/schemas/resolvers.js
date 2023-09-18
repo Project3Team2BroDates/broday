@@ -3,13 +3,15 @@ const {Activity, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
+
   Query: {
     users: async () => {
       return User.find().populate('activities');
     },
-    user: async (parent, args, context) => {
+    user: async (parent, {userId}, context) => {
       if (context.user) {
-            return User.findOne({ _id: context.user._id }).populate('activities');
+
+            return User.findOne({ _id: userId}).populate('activities').populate('bros');
           }
           throw new AuthenticationError('You need to be logged in!');
     },
@@ -20,11 +22,13 @@ const resolvers = {
       return Activity.findOne({ _id: Activity });
     },
     me: async (parent, args, context) => {
+      // console.log(context)
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('activities');
+        return User.findOne({ _id: context.user._id }).populate('activities').populate('bros');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    
   },
 
   Mutation: {
@@ -50,8 +54,24 @@ const resolvers = {
 
       return { token, user };
     },
+    addBro: async(parent,{name},context) =>{
+      if(context.user){
+        const bro = await User.findOne({name:name})
+        const user1 = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bros: bro._id } },
+          {new:true}
+        );
+        await User.findOneAndUpdate(
+          {_id: bro._id},
+          { $addToSet: { bros: context.user._id} },
+          )
+        return user1;
+      }else{throw new AuthenticationError('You need to be logged in!');}
+    },
     addActivity: async (parent,  {activityText} , context) => {
       if (context.user) {
+        // console.log(context.user);
         const activity = await Activity.create({
           activityText,
           
@@ -66,21 +86,34 @@ const resolvers = {
       }else{throw new AuthenticationError('You need to be logged in!');}
       
     },
-    removeActivity: async (parent, { activityId }, context) => {
+    addExistingActivity: async (parent, {activityText} , context) =>{
+        if(context.user){
+          const activity = await Activity.findOne({activityText: activityText});
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { activities: activity._id } }
+          );
+          return activity;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+    },
+    removeActivity: async (parent, { activityText }, context) => {
       if (context.user) {
-        const activity = await Activity.findOneAndDelete({
-          _id: activityId,
+        const activity = await Activity.findOne({
+          activityText: activityText,
         });
 
-        await User.findOneAndUpdate(
+        return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { activity: activity._id } }
+          { $pull: {activities: activity._id}},
+          {new:true}
         );
 
-        return activity;
+        
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    
   },
 };
 

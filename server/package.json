@@ -13,9 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^3.6.2",
+    "dotenv": "^16.3.1",
     "express": "^4.17.2",
     "graphql": "^16.3.0",
-    "mongoose": "^7.0.2"
+    "graphql-yoga": "^1.18.3",
+    "mongoose": "^7.0.2",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
