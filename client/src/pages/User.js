@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import placeholder from '../images/placeholder.png';
+
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 // import {REMOVE_ACTIVITY} from '../utils/mutations'
 
@@ -18,15 +18,10 @@ const User = () => {
   //lets do this
   const user = data?.me || data?.user || {};
   const bros = user.bros;
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    console.log(selectedFile);
-    setFile(selectedFile);
-  };
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    console.log(file);
 
- 
-
-  const handleUpload = async () => {
     console.log("Upload button clicked!");
     if (!file) {
       return; // No file selected, do nothing
@@ -38,7 +33,7 @@ const User = () => {
 
     // Send the file to the server (you should replace 'uploadEndpoint' with your actual server endpoint)
     try {
-      const response = await fetch("/upload", {
+      const response = await fetch("/upload/" + user._id, {
         method: "POST",
         body: formData,
       });
@@ -75,7 +70,7 @@ const User = () => {
   return (
     <div className="profile-container">
       <div className="infoContainer">
-      <h1 className="greeting">Hello, {user.name}!</h1>
+        <h1 className="greeting">Hello, {user.name}!</h1>
 
         <img src={user.profilePic} alt="profile pic " />
         <input
@@ -84,8 +79,7 @@ const User = () => {
           accept=".jpeg, .jpg, .png"
           onChange={handleFileChange}
         />
-      
-</div>
+      </div>
       <div className="user-info-container">
         <ul className="user-info">
           <li>Location:</li>
@@ -96,11 +90,10 @@ const User = () => {
         </ul>
       </div>
       <div class="friend-dropdown">
-        <button class="friend-dropbtn">Friends</button>
+        <button class="friend-dropbtn">≣</button>
         <div class="friend-dropdown-content">
-          {bros.map((bro)=>(
+          {bros.map((bro) => (
             <Link to={`/user/${bro._id}`}>{bro.name}</Link>
-            
           ))}
         </div>
       </div>
@@ -108,7 +101,6 @@ const User = () => {
         <h2 className="profile-card-header">{user.name}'s activities.</h2>
         <div className="activity-list ">
           <UserActivities
-        
             activities={user.activities}
             title={`${user.username}'s activities`}
           />
