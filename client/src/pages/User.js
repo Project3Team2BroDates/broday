@@ -7,6 +7,7 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 import UserActivities from "../components/UserActivities";
+import messages from "../images/friends.png"
 
 const User = () => {
   const { userId } = useParams();
@@ -82,15 +83,12 @@ const User = () => {
       </div>
       <div className="user-info-container">
         <ul className="user-info">
-          <li>Location:</li>
-          <li>Contact: {user.email}</li>
-          <li>Bio:</li>
-          <li>Favorite Activity:</li>
-          <li>Favorite Sports Teams:</li>
+          <li>< Link to={`mailto:${user.email}`}>Contact: {user.email}</Link></li>
+          
         </ul>
       </div>
       <div class="friend-dropdown">
-        <button class="friend-dropbtn">≣</button>
+        <button class="friend-dropbtn"><img src={messages} alt="friends"></img></button>
         <div class="friend-dropdown-content">
           {bros.map((bro) => (
             <Link to={`/user/${bro._id}`}>{bro.name}</Link>

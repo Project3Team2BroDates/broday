@@ -20,6 +20,26 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query users {
+    users {
+      _id
+      name
+      email
+      profilePic
+      activities {
+        _id
+        activityText
+        activityPic
+      }
+      bros {
+        _id
+        name
+      }
+    }
+  }
+`;
+
 export const QUERY_ACTIVITIES = gql`
   query getActivities {
     activities {

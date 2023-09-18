@@ -6,7 +6,7 @@ const resolvers = {
 
   Query: {
     users: async () => {
-      return User.find().populate('activities');
+      return User.find().populate('activities').populate('bros');
     },
     user: async (parent, {userId}, context) => {
       if (context.user) {
@@ -65,6 +65,7 @@ const resolvers = {
         await User.findOneAndUpdate(
           {_id: bro._id},
           { $addToSet: { bros: context.user._id} },
+          {new:true}
           )
         return user1;
       }else{throw new AuthenticationError('You need to be logged in!');}
@@ -79,7 +80,8 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { activities: activity._id } }
+          { $addToSet: { activities: activity._id } },
+          {new:true}
         );
 
         return activity;
@@ -91,7 +93,8 @@ const resolvers = {
           const activity = await Activity.findOne({activityText: activityText});
           await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { activities: activity._id } }
+            { $addToSet: { activities: activity._id } },
+            {new:true}
           );
           return activity;
         }

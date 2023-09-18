@@ -16,7 +16,6 @@ import Bro from './pages/Bro';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Activites from './components/Activities';
 import Friends from './pages/Friends';
 
@@ -97,7 +96,6 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
         </div>
       </Router>
     </ApolloProvider>

@@ -3,11 +3,13 @@ import { useMutation } from "@apollo/client";
 import  { ADD_BRO } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 
-import { QUERY_USER, QUERY_ME } from "../../utils/queries";
+import { QUERY_USERS, QUERY_ME } from "../../utils/queries";
 
 const FriendsList = () =>  {
 const [friendName, setfriendName] = useState("")
-
+const {loading, data } = useQuery(QUERY_USERS);
+const users = data?.users || {};
+console.log(users);
 // mutation
 const [addBro, { error }] = useMutation(ADD_BRO,{
   update(cache, { data: { addBro } }) {
@@ -18,9 +20,12 @@ const [addBro, { error }] = useMutation(ADD_BRO,{
         query: QUERY_ME,
         data: { bros: [addBro, ...bros] },
       });
+
+      
     } catch (e) {
       console.error(e);
     }
+    
 
     // update me object's cache
     const { me } = cache.readQuery({ query: QUERY_ME });
@@ -53,6 +58,9 @@ const handleChange = (event) => {
     setfriendName(value);
   }
 };
+if (loading) {
+  return <div>Loading...</div>;
+}
         return (
             <div className="friendSearch">
                 <div className="mainDiv">
@@ -79,6 +87,12 @@ const handleChange = (event) => {
               Save Friend
             </button>
           </form>
+          <div>
+            <h4>View BroDay Members</h4>
+            {users && users.map((user)=>(
+              <p>{user.name}</p>
+            ))}
+          </div>
         </div>
     </div>
                 </div>
