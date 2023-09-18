@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
+import placeholder from '../images/placeholder.png';
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 // import {REMOVE_ACTIVITY} from '../utils/mutations'
 
@@ -96,7 +96,7 @@ const User = () => {
         </ul>
       </div>
       <div class="friend-dropdown">
-        <button class="friend-dropbtn">≣</button>
+        <button class="friend-dropbtn">Friends</button>
         <div class="friend-dropdown-content">
           {bros.map((bro)=>(
             <Link to={`/user/${bro._id}`}>{bro.name}</Link>
@@ -108,6 +108,7 @@ const User = () => {
         <h2 className="profile-card-header">{user.name}'s activities.</h2>
         <div className="activity-list ">
           <UserActivities
+        
             activities={user.activities}
             title={`${user.username}'s activities`}
           />

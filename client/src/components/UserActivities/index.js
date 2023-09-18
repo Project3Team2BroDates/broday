@@ -61,7 +61,7 @@ const UserActivities = ({
             </h4>
             <div className="card-body ">
               <li >{activity.activityText}</li>
-              <button value={activity.activityText} onClick={handleClick}>Remove Activity</button>
+              <button value={activity.activityText} onClick={handleClick}>X</button>
             </div>
             
           </div>
