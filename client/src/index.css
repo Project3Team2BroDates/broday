@@ -217,6 +217,13 @@ main .card-container {
   height: 50px;
   margin-left: 2rem;
 }
+
+.activity-pic{
+  width: 150px;
+  height: 150px;
+  margin-left: 2rem;
+}
+
 .contactLinks {
   display: flex;
   flex-direction: row;
@@ -1986,6 +1993,13 @@ label form [type='radio'] {
   height: 50px;
   margin-left: 1.75rem;
 }
+
+.activity-pic{
+  width: 50px;
+  height: 50px;
+  margin-left: 1.75rem;
+}
+
 .memberDiv {
   background-color: #2d3e50;
   text-align: center;

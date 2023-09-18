@@ -18,6 +18,7 @@ const typeDefs = gql`
   type Activity {
     _id: ID
     activityText: String
+    activityPic: String
   }
 
   type Query {

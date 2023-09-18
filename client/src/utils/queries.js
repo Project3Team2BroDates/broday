@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
       activities {
         _id
         activityText
+        activityPic
       }
       bros {
         _id
@@ -24,6 +25,7 @@ export const QUERY_ACTIVITIES = gql`
     activities {
       _id
       activityText
+      activityPic
     }
   }
 `;
@@ -33,6 +35,7 @@ export const QUERY_SINGLE_ACTIVITY = gql`
     activity(activityId: $activityId) {
       _id
       activityText
+      activityPic
     }
   }
 `;
@@ -47,6 +50,7 @@ export const QUERY_ME = gql`
       activities {
         _id
         activityText
+        activityPic
       }
       bros {
         _id
@@ -64,6 +68,7 @@ export const QUERY_SINGLE_USER = gql`
       activities {
         _id
         activityText
+        activityPic
       }
       bros {
         _id

@@ -28,16 +28,36 @@ db.once("open", async () => {
 
     // Create an array of activity objects
     const activities = [
-      { activityText: "Football" },
-      { activityText: "Golf" },
-      { activityText: "Video Games" },
-      { activityText: "Soccer" },
-      { activityText: "Fishing" },
-      { activityText: "Baseball" },
-      { activityText: "Basketball" },
-      { activityText: "Hunting" },
-      { activityText: "Hiking" },
-      { activityText: "Working Out" },
+      { activityText: "Football",
+        activityPic: "/images/Football.jpg"},
+
+      { activityText: "Golf",
+        activityPic: "/images/Golf.jpg" },
+
+      { activityText: "Video Games",
+        activityPic: "/images/VideoGames.jpg" },
+
+      { activityText: "Soccer",
+        activityPic: "/images/Soccer.jpg" },
+
+      { activityText: "Fishing",
+        activityPic: "/images/Fishing.jpg" },
+
+      { activityText: "Baseball",
+        activityPic: "/images/Baseball.jpg" },
+
+      { activityText: "Basketball",
+        activityPic: "/images/Basketball.jpg" },
+
+      { activityText: "Hunting",
+        activityPic: "/images/Hunting.jpg" },
+
+      { activityText: "Hiking",
+        activityPic: "/images/Hiking.jpg" },
+
+      { activityText: "Working Out",
+      activityPic: "/images/WorkingOut.jpg"},
+
     ];
 
     await Activity.insertMany(activities);
