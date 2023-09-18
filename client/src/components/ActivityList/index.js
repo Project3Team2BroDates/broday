@@ -21,11 +21,11 @@ const ActivityList = ({ activities, title }) => {
       } catch (err) {
         console.error(err);
       }
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
-      // });
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, activities: [...me.activities, addExistingActivity] } },
+      });
     },
   });
   const handleChange = (event) => {
@@ -37,14 +37,14 @@ const ActivityList = ({ activities, title }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(activityArray);
+      // console.log(activityArray);
       for (let i = 0; i < activityArray.length; i++) {
         let currentActivity = activityArray[i];
-        console.log(currentActivity);
+        // console.log(currentActivity);
         const { data } = await addExistingActivity({
           variables: { activityText: currentActivity },
         });
-        console.log(data);
+        // console.log(data);
       }
     } catch (err) {
       console.error(err);

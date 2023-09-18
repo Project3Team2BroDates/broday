@@ -100,11 +100,20 @@ main .card-container {
   color: white;
   justify-content: center;
   flex-wrap: wrap;
-  width: 60%;
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
   background-color: #1a1a1a;
+}
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 3rem;
+}
+.friendsListContainer form {
+   width: 100%;
 }
 .friendsListContainer h3 {
   width: 100%;
@@ -124,6 +133,9 @@ main .card-container {
 }
 .friendsListContainer input {
   margin-bottom: 2rem;
+  width: 80%;
+}
+.friendsListContainer form h3 {
   width: 80%;
 }
 .friendsListContainer form {
@@ -159,14 +171,14 @@ main .card-container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 95%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: -3rem;
-  margin-bottom: 10rem;
-  height: 70vh;
+  height: 35rem;
   background-color: #2d3e50;
   opacity: .97;
+  overflow: hidden;
 }
 .about {
   display: flex;
@@ -191,6 +203,7 @@ main .card-container {
   font-size: 2rem;
 }
 .memberDiv {
+  padding: 2px;
   text-align: center;
   border: 1px solid black;
   width: 25%;
@@ -207,7 +220,6 @@ main .card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -1rem;
   height: 3rem;
   background-color: #31a9e1;
   font-size: 2.5rem;
@@ -228,15 +240,14 @@ main .card-container {
 .contactLinks {
   display: flex;
   flex-direction: row;
-  margin-top: 21.5rem;
-  margin-left: 0rem;
-  background-color: #31a9e1;
+  position: fixed;
+  bottom: 10;
   padding-top: 5px;
 }
 
 .chosenPic{
   background: none;
-  margin-left: 4em;
+  margin-left: 10em;
   margin-top: 2em;
   width: 100%; 
 }
@@ -324,13 +335,18 @@ background-color:#2d3e50;
   margin: 10px;
   padding: 5px;
   width: 100%;
-  height: 100vh;
+  height: auto;
+  overflow: hidden;
 }
 .activityListContainer .card-container {
+  
   border-radius: 15px;
 }
 .activityListContainer .card-container .card-body {
   background-color:#1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 300px;
   margin: 10px;
@@ -338,8 +354,9 @@ background-color:#2d3e50;
 .activityListContainer .card-body {
   border-radius: 10px;
 }
-.activityListContainer .card-container li {
+.activityListContainer .card-container .card-body li {
   background-color: #31a9e1;
+  width: 100%;
 }
 .activityListContainer button {
   background-color: #31a9e1;
@@ -449,38 +466,47 @@ border-radius: 15px;
 .friend-dropbtn {
   background-color:#31a9e1;
   color: white;
-  width: 10rem;
+  width: 100px;
+  height: 100px;
   font-size: 2rem;
   padding:10px;
-  border-radius: 25px;
+  border-radius: 50px;
   cursor: pointer;
-  margin-left: 30rem;
+  margin-left: 50%;
   z-index: 1;
 }
-
+.friend-dropbtn img{
+  width: 50px;
+  height: 50px;
+}
 /* The container <div> - needed to position the dropdown content */
 .friend-dropdown {
   display: inline-block;
-  margin-left: 45rem;
-  margin-top: -20rem;
+  margin-left: 0;
+  margin-top: 0;
+  z-index: 1;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .friend-dropdown-content {
   display: none;
   font-size: 1.5rem;
+  background-color: #fff;
   text-align: center;
   width: 10rem;
-  height: 5rem;
+  height: aut;
+  margin-left: 10%;
   border-radius: 25px;
   text-shadow: 5px 5px 5px black;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  overflow: hidden;
 }
 
 /* Links inside the dropdown */
 .friend-dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 12px;
   text-decoration: none;
   display: block;
 }
@@ -495,16 +521,7 @@ border-radius: 15px;
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
- .friend-dropbtn {
-  background-color:#31a9e1;
-  text-shadow: 5px 5px 5px black;
-}
 
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
 h1 {
   font-size: 6em;
   margin: 0.67em 0;
@@ -578,7 +595,12 @@ background: #000;
   width: 100%;
   margin-bottom: 3em;
 }
-
+.aboutInfo {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 2rem;
+}
 .title {
   margin: 0;
   font-size: 4em;
@@ -669,15 +691,17 @@ sup {
 /**
  * Remove the border on images inside links in IE 10.
  */
-img {
-  border-radius: 125px;
+.infoContainer img {
   border-style: none;
+  border-radius: 100px;
   width: 200px;
   height: 200px;
-  margin-left: 75px;
+  margin-left: auto;
 
 }
-
+.memberDiv img {
+  border-radius: 50px;
+}
 /* Forms
    ========================================================================== */
 /**
@@ -835,6 +859,7 @@ progress {
   -webkit-appearance: button;
   background-color: #31a9e1;
   color: white;
+  width: 50%;
   border-radius: 25px;
   padding: 5px;
   /* 1 */
@@ -1674,7 +1699,6 @@ label form [type='radio'] {
 @media screen and (min-width: 280px) and  (max-width: 414px){
   .container-1 {
     width: 100%;
-    height: auto;
     padding: 0;
   }
   main {
@@ -1692,6 +1716,9 @@ label form [type='radio'] {
     margin-right: auto;
     margin-bottom: 100px;
     opacity: .98;
+  }
+  .mainDiv { 
+    text-align: center;
   }
   .profile-card-header {
     display: flex;
@@ -1777,7 +1804,6 @@ label form [type='radio'] {
     margin-top: 30em;
     padding: 10px;
     opacity: .95;
-   
   }
   .chosenPic{
     background: none;
@@ -1855,6 +1881,7 @@ label form [type='radio'] {
     margin-bottom: 2rem;
     width: 100%;
     height: auto;
+    overflow: hidden;
   }
   .activityListContainer {
     display: block;
@@ -1863,7 +1890,7 @@ label form [type='radio'] {
     margin-top: 10rem;
     padding: 5px;
     width: 100%;
-    height: 100vh;
+    height: auto;
   }
   .activityListContainer .card-container {
     border-radius: 15px;
@@ -1941,7 +1968,7 @@ label form [type='radio'] {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10rem;
-  margin-top: 30rem;
+  margin-top: 32rem;
   padding: 2rem;
   font-size: .5rem;
   width: 100%;
@@ -1976,18 +2003,17 @@ label form [type='radio'] {
   margin-left: auto;
   margin-right: auto;
   margin-top: -3rem;
-  margin-bottom: 50rem;
-  height: 100vh;
+  margin-bottom: 10rem;
+  height: auto;
   background-color: #2d3e50;
   opacity: .97;
+  overflow: hidden;
 }
 .contactLinks {
-  display: flex;
+  width: 100%;
+  margin-top: -0px;
   flex-direction: row;
-  margin-top: 21.5rem;
-  margin-left: -1.4rem;
   background-color: #31a9e1;
-  padding-top: 5px;
 }
 .contact {
   width: 50px;
@@ -2006,14 +2032,21 @@ label form [type='radio'] {
   text-align: center;
   border-radius: 15px;
   border: 1px solid black;
-  margin-top: 3rem;
+  margin-top: 5rem;
+  padding-bottom: 3rem;
   width: 100%;
+}
+.contactContainer h2{
+  padding: 5px;
+}
+.memberDiv img {
+  border-radius: 50px;
 }
   .redirect {
     font-size: 2rem;
     color: white;
     background-color: red;
-    margin-top: 30rem;
+    margin-top: 32rem;
     margin-bottom: 10rem;
   }
   .footer {
@@ -2120,6 +2153,9 @@ label form [type='radio'] {
   .friendsListContainer input {
     margin-bottom: 2rem;
     width: 80%;
+  }
+  .meet {
+    margin-top: 32rem;
   }
   .friendsListContainer form {
     display: flex;

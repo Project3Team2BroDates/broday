@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import {Link, Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 
@@ -8,6 +8,7 @@ import { QUERY_USER } from "../utils/queries";
 
 import Auth from "../utils/auth";
 import UserActivities from "../components/UserActivities";
+import messages from "../images/friends.png"
 
 
 const Bro = () => {
@@ -77,7 +78,7 @@ const Bro = () => {
   return (
     <div className="profile-container">
       <div className="infoContainer">
-      <h1 className="greeting">Hello, {user.name}!</h1>
+      <h1 className="greeting">{user.name}'s profile</h1>
 
         <img src={user.profilePic} alt="profile pic " />
         <input
@@ -90,15 +91,11 @@ const Bro = () => {
 </div>
       <div className="user-info-container">
         <ul className="user-info">
-          <li>Location:</li>
-          <li>Contact: {user.email}</li>
-          <li>Bio:</li>
-          <li>Favorite Activity:</li>
-          <li>Favorite Sports Teams:</li>
+        <li>< Link to={`mailto:${user.email}`}>Contact: {user.email}</Link></li>
         </ul>
       </div>
       <div class="friend-dropdown">
-        <button class="friend-dropbtn">Friends</button>
+        <button class="friend-dropbtn"><img src={messages} alt="friends"></img></button>
         <div class="friend-dropdown-content">
           {bros.map((bro)=>(
             <li>{bro.name}</li>
